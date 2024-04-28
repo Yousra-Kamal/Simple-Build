@@ -16,6 +16,10 @@ const projectResolver = {
     tasks: async (parent) => {
       return tasksData.filter((task) => task.projectId === parent._id);
     },
+    user: async (parent) => {
+      const user = usersData.find((user) => user._id === parent.userId);
+      return user;
+    },
   },
 };
 
