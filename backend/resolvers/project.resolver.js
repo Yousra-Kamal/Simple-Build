@@ -11,7 +11,23 @@ const projectResolver = {
       return project;
     },
   },
-  Mutation: {},
+  Mutation: {
+    updateProject: async (_, { projectId, input }) => {
+      const projectIndex = projectsData.findIndex(
+        (project) => project._id === projectId
+      );
+      projectsData[projectIndex] = { ...projectsData[projectIndex], ...input };
+      return projectsData[projectIndex];
+    },
+    deleteProject: async (_, { projectId}) => {
+      const projectIndex = projectsData.findIndex(
+        (project) => project._id === projectId
+      );
+      const project = projectsData[projectIndex];
+      projectsData.splice(projectIndex, 1);
+      return project;
+    },
+  },
   Project: {
     tasks: async (parent) => {
       return tasksData.filter((task) => task.projectId === parent._id);

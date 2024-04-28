@@ -6,6 +6,7 @@ const taskTypeDef = `#graphql
         description: String!
         status: String! 
         stage: String!
+        sequenceNumber: Int!
         #Task must be associated with a project
         project: Project!
         
@@ -18,7 +19,7 @@ const taskTypeDef = `#graphql
 
     type Mutation {
         createTask(input: CreateTaskInput!): Task
-        updateTask(input: UpdateTaskInput!): Task
+        updateTask(taskId: ID!, input: UpdateTaskInput!): Task
         deleteTask(taskId: ID!): Task
     }
 
@@ -33,7 +34,7 @@ const taskTypeDef = `#graphql
         title: String
         description: String
         status: String
-        projectId: ID
+        stage: String
     }
 `;
 

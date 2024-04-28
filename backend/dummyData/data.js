@@ -88,6 +88,7 @@ const tasksData = [
     description: "Clearing the site and preparing the land for construction.",
     status: "Completed",
     stage: "Planning",
+    sequenceNumber: 1,
   },
   {
     _id: "2",
@@ -96,6 +97,7 @@ const tasksData = [
     description: "Laying the foundation for the homes.",
     status: "In Progress",
     stage: "Construction",
+    sequenceNumber: 2,
   },
   {
     _id: "3",
@@ -104,6 +106,7 @@ const tasksData = [
     description: "Construction of the eco-friendly homes.",
     status: "Pending",
     stage: "Construction",
+    sequenceNumber: 3,
   },
   {
     _id: "4",
@@ -112,6 +115,7 @@ const tasksData = [
     description: "Creating gardens and outdoor spaces.",
     status: "Pending",
     stage: "Finishing",
+    sequenceNumber: 4,
   },
   {
     _id: "5",
@@ -120,6 +124,7 @@ const tasksData = [
     description: "Obtaining approval for the design of the residences.",
     status: "Completed",
     stage: "Planning",
+    sequenceNumber: 1,
   },
   {
     _id: "6",
@@ -128,6 +133,7 @@ const tasksData = [
     description: "Building the luxury riverside residences.",
     status: "Completed",
     stage: "Construction",
+    sequenceNumber: 2,
   },
   {
     _id: "7",
@@ -136,6 +142,7 @@ const tasksData = [
     description: "Creating gardens and outdoor spaces.",
     status: "Completed",
     stage: "Finishing",
+    sequenceNumber: 3,
   },
   {
     _id: "8",
@@ -144,6 +151,7 @@ const tasksData = [
     description: "Surveying the site for the hillside residences.",
     status: "Completed",
     stage: "Planning",
+    sequenceNumber: 1,
   },
   {
     _id: "9",
@@ -153,6 +161,7 @@ const tasksData = [
       "Obtaining approval for the design of the hillside residences.",
     status: "Completed",
     stage: "Planning",
+    sequenceNumber: 2,
   },
   {
     _id: "10",
@@ -161,6 +170,7 @@ const tasksData = [
     description: "Building the hillside residences.",
     status: "Pending",
     stage: "Construction",
+    sequenceNumber: 3,
   },
   {
     _id: "11",
@@ -169,6 +179,7 @@ const tasksData = [
     description: "Clearing the site and preparing the land for construction.",
     status: "Completed",
     stage: "Planning",
+    sequenceNumber: 1,
   },
 ];
 
