@@ -1,4 +1,4 @@
-import { projectsData } from "../dummyData/data.js";
+import { usersData, projectsData, tasksData } from "../dummyData/data.js";
 
 const projectResolver = {
   Query: {
@@ -6,29 +6,17 @@ const projectResolver = {
       console.log(projectsData);
       return projectsData;
     },
-
     project: async (_, { projectId }) => {
-      return projectsData.find((project) => project._id === projectId);
+      const project = projectsData.find((project) => project._id === projectId);
+      return project;
     },
-
-    /*   projects: async () => {
-      return await Project.find();
-    },
-    project: async (_, { projectId }) => {
-      return await Project.findById(projectId);
-    }, */
   },
-  /*  Mutation: {
-    createProject: async (_, { input }) => {
-      return await Project.create(input);
+  Mutation: {},
+  Project: {
+    tasks: async (parent) => {
+      return tasksData.filter((task) => task.projectId === parent._id);
     },
-    updateProject: async (_, { id, input }) => {
-      return await Project.findByIdAndUpdate(id, input, { new: true });
-    },
-    deleteProject: async (_, { id }) => {
-      return await Project.findByIdAndRemove(id);
-    },
-  }, */
+  },
 };
 
 export default projectResolver;

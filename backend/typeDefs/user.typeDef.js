@@ -6,6 +6,8 @@ const userTypeDef = `#graphql
     password: String! 
     #User can have many projects
     projects: [Project!]
+    #User can have many tasks
+    
 }
 
 type Query {

@@ -2,6 +2,7 @@ const projectTypeDef = `#graphql
     type Project { 
         _id: ID!
         userId: ID!
+        taskIDs: [ID]
         name: String!
         description: String!
         status: String!
