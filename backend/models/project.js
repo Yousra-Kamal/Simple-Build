@@ -31,6 +31,17 @@ const projectSchema = new Schema({
       ref: "Task",
     },
   ],
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  taskIDs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Task",
+    },
+  ],
 });
 
 const Project = model("Project", projectSchema);
