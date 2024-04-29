@@ -12,6 +12,18 @@ const projectResolver = {
     },
   },
   Mutation: {
+    createProject: async (_, { input }) => {
+      const newProject = {
+        _id: String(projectsData.length + 1),
+        userId: "1",
+        taskIDs: [],
+        ...input,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      };
+      projectsData.push(newProject);
+      return newProject;
+    },
     updateProject: async (_, { projectId, input }) => {
       const projectIndex = projectsData.findIndex(
         (project) => project._id === projectId
