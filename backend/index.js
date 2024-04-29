@@ -1,5 +1,4 @@
 import { ApolloServer } from "@apollo/server";
-
 // Import express and express middleware for ApolloServer plugin
 // and cors for enabling cross-origin requests
 import { expressMiddleware } from "@apollo/server/express4";
@@ -7,10 +6,14 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import express from "express";
 import http from "http";
 import cors from "cors";
+import dotenv from "dotenv";
 
 // Import merged resolvers and typeDefs
 import mergedResolvers from "./resolvers/index.js";
 import mergedTypeDefs from "./typeDefs/index.js";
+
+// Load environment variables from .env file
+dotenv.config();
 
 // Required logic for integrating with Express
 const app = express();
