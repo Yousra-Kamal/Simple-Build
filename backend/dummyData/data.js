@@ -87,7 +87,7 @@ const tasksData = [
     title: "Site Preparation",
     description: "Clearing the site and preparing the land for construction.",
     status: "Completed",
-    stage: "Planning",
+    stage: "Setup",
     sequenceNumber: 1,
   },
   {
@@ -96,7 +96,7 @@ const tasksData = [
     title: "Foundation Work",
     description: "Laying the foundation for the homes.",
     status: "In Progress",
-    stage: "Construction",
+    stage: "Slab",
     sequenceNumber: 2,
   },
   {
@@ -105,7 +105,7 @@ const tasksData = [
     title: "Building Construction",
     description: "Construction of the eco-friendly homes.",
     status: "Pending",
-    stage: "Construction",
+    stage: "Frame",
     sequenceNumber: 3,
   },
   {
@@ -114,7 +114,7 @@ const tasksData = [
     title: "Landscaping",
     description: "Creating gardens and outdoor spaces.",
     status: "Pending",
-    stage: "Finishing",
+    stage: "Lockup",
     sequenceNumber: 4,
   },
   {
@@ -123,7 +123,7 @@ const tasksData = [
     title: "Design Approval",
     description: "Obtaining approval for the design of the residences.",
     status: "Completed",
-    stage: "Planning",
+    stage: "Fixing",
     sequenceNumber: 1,
   },
   {
@@ -132,7 +132,7 @@ const tasksData = [
     title: "Construction",
     description: "Building the luxury riverside residences.",
     status: "Completed",
-    stage: "Construction",
+    stage: "Completion",
     sequenceNumber: 2,
   },
   {
@@ -141,7 +141,7 @@ const tasksData = [
     title: "Landscaping",
     description: "Creating gardens and outdoor spaces.",
     status: "Completed",
-    stage: "Finishing",
+    stage: "Handover",
     sequenceNumber: 3,
   },
   {
@@ -150,7 +150,7 @@ const tasksData = [
     title: "Site Survey",
     description: "Surveying the site for the hillside residences.",
     status: "Completed",
-    stage: "Planning",
+    stage: "Setup",
     sequenceNumber: 1,
   },
   {
@@ -160,7 +160,7 @@ const tasksData = [
     description:
       "Obtaining approval for the design of the hillside residences.",
     status: "Completed",
-    stage: "Planning",
+    stage: "Setup",
     sequenceNumber: 2,
   },
   {
@@ -169,7 +169,7 @@ const tasksData = [
     title: "Construction",
     description: "Building the hillside residences.",
     status: "Pending",
-    stage: "Construction",
+    stage: "Slab",
     sequenceNumber: 3,
   },
   {
@@ -178,10 +178,10 @@ const tasksData = [
     title: "Site Preparation",
     description: "Clearing the site and preparing the land for construction.",
     status: "Completed",
-    stage: "Planning",
+    stage: "Setup",
     sequenceNumber: 1,
   },
 ];
 
 // Export the arrays
-export { projectsData, usersData, tasksData };
+module.exports = { usersData, projectsData, tasksData };

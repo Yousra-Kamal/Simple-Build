@@ -34,4 +34,4 @@ type Query {
 
 `;
 
-export default userTypeDef;
+module.exports = userTypeDef;

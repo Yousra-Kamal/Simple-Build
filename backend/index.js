@@ -1,57 +1,51 @@
-import { ApolloServer } from "@apollo/server";
-// Import express and express middleware for ApolloServer plugin
-// and cors for enabling cross-origin requests
-import { expressMiddleware } from "@apollo/server/express4";
-import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
-import express from "express";
-import http from "http";
-import cors from "cors";
-import dotenv from "dotenv";
+const express = require("express");
+const { ApolloServer } = require("@apollo/server");
+const { expressMiddleware } = require("@apollo/server/express4");
+const path = require("path");
+const { authMiddleware } = require("./utils/auth");
+const mergedResolvers = require("./resolvers/index.js");
+const mergedTypeDefs = require("./typeDefs/index.js");
+const db = require("./db/connectDB.js");
 
-// Import merged resolvers and typeDefs
-import mergedResolvers from "./resolvers/index.js";
-import mergedTypeDefs from "./typeDefs/index.js";
-
-import { connectDB } from "./db/connectDB.js";
-
-// Load environment variables from .env file
+const dotenv = require("dotenv");
 dotenv.config();
 
-// Required logic for integrating with Express
+const PORT = process.env.PORT || 3001;
 const app = express();
-
-// Our httpServer handles incoming requests to our Express app.
-// Below, we tell Apollo Server to "drain" this httpServer,
-// enabling our servers to shut down gracefully.
-const httpServer = http.createServer(app);
-
-// Create a new ApolloServer instance with the merged typeDefs and resolvers,
-// plus the drain plugin for our httpServer.
 const server = new ApolloServer({
   typeDefs: mergedTypeDefs,
   resolvers: mergedResolvers,
-  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-// Ensure we wait for our server to start
-await server.start();
+// Create a new instance of an Apollo server with the GraphQL schema
+const startApolloServer = async () => {
+  await server.start();
 
-// Set up our Express middleware to handle CORS, body parsing,
-// and our expressMiddleware function.
-app.use(
-  "/",
-  cors(),
-  express.json(),
-  // expressMiddleware accepts the same arguments:
-  // an Apollo Server instance and optional configuration options
-  expressMiddleware(server, {
-    context: async ({ req }) => ({ req }),
-  })
-);
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
 
-// Modified server startup
-await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
+  app.use(
+    "/graphql",
+    expressMiddleware(server, {
+      context: authMiddleware,
+    })
+  );
 
-await connectDB();
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/dist")));
 
-console.log(`🚀 Server ready at http://localhost:4000/`);
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+    });
+  }
+
+  db.once("open", () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
+  });
+};
+
+// Call the async function to start the server
+startApolloServer();

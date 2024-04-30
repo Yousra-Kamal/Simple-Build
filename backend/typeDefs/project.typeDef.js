@@ -29,4 +29,4 @@ const projectTypeDef = `#graphql
     }
 `;
 
-export default projectTypeDef;
+module.exports = projectTypeDef;

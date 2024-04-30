@@ -1,9 +1,9 @@
-import { mergeResolvers } from "@graphql-tools/merge";
-
+const { mergeResolvers } = require('@graphql-tools/merge');
+ 
 // Importing resolvers
-import userResolver from "./user.resolver.js";
-import projectResolver from "./project.resolver.js";
-import taskResolver from "./task.resolver.js";
+const userResolver = require("./user.resolver");
+const projectResolver = require("./project.resolver");
+const taskResolver = require("./task.resolver");
 
 // Merging resolvers into one variable to export it to the server file (index.js).
 const mergedResolvers = mergeResolvers([
@@ -12,4 +12,4 @@ const mergedResolvers = mergeResolvers([
   taskResolver,
 ]);
 
-export default mergedResolvers;
+module.exports = mergedResolvers;

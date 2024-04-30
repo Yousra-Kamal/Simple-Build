@@ -1,10 +1,11 @@
 // Initialize typeDefs and merge them into one
-import { mergeTypeDefs } from "@graphql-tools/merge";
+
+const { mergeTypeDefs } = require("@graphql-tools/merge");
 
 // Importing typeDefs
-import userTypeDef from "./user.typeDef.js";
-import projectTypeDef from "./project.typeDef.js";
-import taskTypeDef from "./task.typeDef.js";
+const userTypeDef = require("./user.typeDef");
+const projectTypeDef = require("./project.typeDef");
+const taskTypeDef = require("./task.typeDef");
 
 // Merging typeDefs into one variable to export it to the server file (index.js).
 const mergedTypeDefs = mergeTypeDefs([
@@ -13,4 +14,4 @@ const mergedTypeDefs = mergeTypeDefs([
   taskTypeDef,
 ]);
 
-export default mergedTypeDefs;
+module.exports = mergedTypeDefs;

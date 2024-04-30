@@ -1,4 +1,4 @@
-import { usersData, projectsData, tasksData } from "../dummyData/data.js";
+const { usersData, projectsData, tasksData } = require("../dummyData/data.js");
 
 const taskResolver = {
   Query: {
@@ -41,4 +41,4 @@ const taskResolver = {
   },
 };
 
-export default taskResolver;
+module.exports = taskResolver;

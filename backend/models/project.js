@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose";
-import dateFormat from "../utils/dateFormat";
+const { Schema, model } = require("mongoose");
+const { dateFormat } = require("../utils/dateFormat");
 
 const projectSchema = new Schema({
   name: {
@@ -51,4 +51,4 @@ const projectSchema = new Schema({
 
 const Project = model("Project", projectSchema);
 
-export default Project;
+module.exports = Project;

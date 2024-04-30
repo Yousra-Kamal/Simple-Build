@@ -38,4 +38,4 @@ const taskTypeDef = `#graphql
     }
 `;
 
-export default taskTypeDef;
+module.exports = taskTypeDef;

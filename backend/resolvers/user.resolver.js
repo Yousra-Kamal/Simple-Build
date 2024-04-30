@@ -1,59 +1,41 @@
-import { usersData, projectsData, tasksData } from "../dummyData/data.js";
-import { signToken, AuthenticationError } from "../utils/auth.js";
+const { User } = require("../models");
+const { signToken, AuthenticationError } = require("../utils/auth.js");
 
 const userResolver = {
   Query: {
     users: async () => {
-      console.log(usersData);
-      return usersData;
+      return User.find().populate("projects");
     },
     user: async (_, { userId }) => {
-      // userId is coming from the client, so we can use it to find the user
-
-      const user = usersData.find((user) => user._id === userId);
-
-      console.log(user);
-      return user;
+      return User.findById(userId).populate("projects");
     },
   },
   Mutation: {
     addUser: async (_, { username, email, password }) => {
-      console.log(username, email, password);
-      const user = {
-        _id: String(usersData.length + 1),
-        username,
-        email,
-        password,
-      };
-      usersData.push(user);
-      console.log(usersData);
+      const user = await User.create({ username, email, password });
       const token = signToken(user);
       return { token, user };
     },
     login: async (_, { email, password }) => {
-      console.log(email + " " + password);
-      const user = usersData.find((user) => user.email === email);
+      const user = await User.findOne({ email });
       if (!user) {
         throw AuthenticationError;
       }
-      const correctPw = user.password === password;
+
+      const correctPw = await user.isCorrectPassword(password);
+
       if (!correctPw) {
         throw AuthenticationError;
       }
-      // If email and password are correct, sign user into the application with a JWT
+
       const token = signToken(user);
+
       return { token, user };
     },
-
     logout: async () => {
-      return { token: "" };
-    },
-  },
-  User: {
-    projects: async (parent) => {
-      return projectsData.filter((project) => project.userId === parent._id);
+      return { message: "You have successfully logged out" };
     },
   },
 };
 
-export default userResolver;
+module.exports = userResolver;
