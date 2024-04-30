@@ -3,19 +3,19 @@ const usersData = [
   {
     _id: "1",
     username: "user1",
-    name: "User One",
+    email: "UserOne@hotmail.com",
     password: "password1",
   },
   {
     _id: "2",
     username: "user2",
-    name: "User Two",
+    email: "UserTwo@hotmail.com",
     password: "password2",
   },
   {
     _id: "3",
     username: "user3",
-    name: "User Three",
+    email: "UserThree@hotmail.com",
     password: "password3",
   },
 ];

@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import dateFormat from "../utils/dateFormat";
 
 const projectSchema = new Schema({
   name: {
@@ -12,10 +13,14 @@ const projectSchema = new Schema({
   createdAt: {
     type: Date,
     required: true,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
   updatedAt: {
     type: Date,
     required: true,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   },
   status: {
     type: String,
