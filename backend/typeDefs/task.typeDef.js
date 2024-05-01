@@ -27,6 +27,8 @@ const taskTypeDef = `#graphql
         title: String!
         description: String!
         status: String!
+        stage: String!
+        sequenceNumber: Int!
         projectId: ID!
     }
 

@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const taskSchema = new Schema({
   title: {
@@ -34,13 +34,8 @@ const taskSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Project",
   },
-  projectId: {
-    type: Schema.Types.ObjectId,
-    ref: "Project",
-    required: true,
-  },
 });
 
 const Task = model("Task", taskSchema);
 
-module.exports = Task;  
+module.exports = Task;

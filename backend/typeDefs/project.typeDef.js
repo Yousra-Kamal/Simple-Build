@@ -1,8 +1,6 @@
 const projectTypeDef = `#graphql
     type Project { 
         _id: ID!
-        userId: ID!
-        taskIDs: [ID]
         name: String!
         description: String!
         status: String!
@@ -11,7 +9,7 @@ const projectTypeDef = `#graphql
         #Project must be associated with a user
         user: User!
         #Project can have many tasks
-        tasks: [Task!]
+        tasks: [Task]
     }
     input ProjectInput {
         name: String!
@@ -23,9 +21,16 @@ const projectTypeDef = `#graphql
         project(projectId: ID!): Project
     }
    type Mutation {
-        createProject(input: ProjectInput!): Project
-        updateProject(projectId: ID!, input: ProjectInput!): Project
+        createProject(username: String!, name:String!, description:String!, status:String! ): Project
+        updateProject(input: updateProjectInput!): Project
         deleteProject(projectId: ID!): Project
+    }
+
+    input updateProjectInput {
+        projectId: ID!
+        name: String
+        description: String
+        status: String
     }
 `;
 

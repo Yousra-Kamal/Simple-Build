@@ -14,13 +14,11 @@ const projectSchema = new Schema({
     type: Date,
     required: true,
     default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
   },
   updatedAt: {
     type: Date,
     required: true,
     default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
   },
   status: {
     type: String,
@@ -31,17 +29,6 @@ const projectSchema = new Schema({
     ref: "User",
   },
   tasks: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Task",
-    },
-  ],
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  taskIDs: [
     {
       type: Schema.Types.ObjectId,
       ref: "Task",

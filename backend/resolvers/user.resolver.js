@@ -1,13 +1,18 @@
 const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth.js");
+const { usersData, projectsData, tasksData } = require("../dummyData/data.js");
 
 const userResolver = {
   Query: {
     users: async () => {
-      return User.find().populate("projects");
+      return User.find()
+        .populate("projects")
+        .populate({ path: "projects", populate: "tasks" });
     },
     user: async (_, { userId }) => {
-      return User.findById(userId).populate("projects");
+      return User.findById(userId)
+        .populate("projects")
+        .populate({ path: "projects", populate: "tasks" });
     },
   },
   Mutation: {
