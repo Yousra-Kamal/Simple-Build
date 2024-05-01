@@ -1,7 +1,11 @@
+import HomePage from "./pages/HomePage";
+import ProjectSidebar from "./components/ProjectSidebar";
+import ProjectForm from "./components/ProjectForm";
+
 function App() {
   return (
     <>
-      <h1 className=" text-red-500 text-2xl text-center mt-40">Hello world</h1>
+      <HomePage/>
     </>
   );
 }
