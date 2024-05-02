@@ -53,8 +53,8 @@ const projects = [
 
 export default function ProjectList() {
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="px-4 sm:px-6 lg:px-8">
+    <div className=" flex min-h-full flex-1 flex-col justify-center py-12 lg:px-8">
+      <div className="pt-4 bg-white px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
             <h1 className="text-lg font-semibold leading-6 text-gray-900">
@@ -141,19 +141,19 @@ export default function ProjectList() {
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                         🏚 {project.name}
                       </td>
-                      <td className="whitespace-nowrap   py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {project.description}
                       </td>
-                      <td className="whitespace-nowrap  py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {project.startDate}
                       </td>
-                      <td className="whitespace-nowrap  py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {project.endDate}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {project.status}
                       </td>
-                      <td className="relative whitespace-nowrap py-4 pr-4 text-right text-sm font-medium">
+                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <a
                           href="#"
                           className="text-blue-600 hover:text-blue-400"
@@ -161,7 +161,7 @@ export default function ProjectList() {
                           Edit<span className="sr-only">, {project.name}</span>
                         </a>
                       </td>
-                      <td className="relative whitespace-nowrap py-4 pr-4 text-right text-sm font-medium">
+                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <a href="#" className="text-red-600 hover:text-red-400">
                           Delete
                           <span className="sr-only">, {project.name}</span>

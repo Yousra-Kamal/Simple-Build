@@ -1,11 +1,11 @@
 import HomePage from "./pages/HomePage";
-import ProjectSidebar from "./components/ProjectSidebar";
-import ProjectForm from "./components/ProjectForm";
+import MainNav from "./components/MainNav";
 
 function App() {
   return (
     <>
-      <HomePage/>
+      <MainNav />
+      <HomePage />
     </>
   );
 }
