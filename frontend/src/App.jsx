@@ -1,11 +1,11 @@
 import HomePage from "./pages/HomePage";
-import MainNav from "./components/MainNav";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProjectSummaryPage from "./pages/ProjectSummaryPage";
 
 function App() {
   return (
     <>
-      <MainNav />
-      <HomePage />
+      <ProjectSummaryPage />
     </>
   );
 }

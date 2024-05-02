@@ -1,6 +1,6 @@
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
-export default function Example() {
+
+export default function CreateProjectForm() {
   return (
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 border-solid border-2 border-blue-100   ">
       <form>

@@ -1,10 +1,11 @@
-import ProjectSidebar from "../components/ProjectPageSidebar";
-import ProjectList from "../components/ProjectList";
+import MainNav from "../components/MainNav";
+import ProjectsList from "../components/ProjectsList";
 
 export default function HomePage() {
   return (
     <>
-      <ProjectList />
+      <MainNav />
+      <ProjectsList />
     </>
   );
 }
