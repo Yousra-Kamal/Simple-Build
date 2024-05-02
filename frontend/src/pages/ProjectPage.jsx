@@ -1,8 +1,7 @@
 import ProjectDetail from "../components/ProjectDetail";
 import ProjectPageSidebar from "../components/ProjectPageSidebar";
-import CreateProjectForm from "../components/CreateProjectForm";
 
-export default function ProjectSummaryPage() {
+export default function ProjectPage() {
   return (
     <>
       <ProjectPageSidebar />

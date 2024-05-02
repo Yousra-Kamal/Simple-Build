@@ -1,11 +1,11 @@
 import HomePage from "./pages/HomePage";
 import NotFoundPage from "./pages/NotFoundPage";
-import ProjectSummaryPage from "./pages/ProjectSummaryPage";
+import ProjectPage from "./pages/ProjectPage";
 
 function App() {
   return (
     <>
-      <ProjectSummaryPage />
+      <ProjectPage />
     </>
   );
 }
