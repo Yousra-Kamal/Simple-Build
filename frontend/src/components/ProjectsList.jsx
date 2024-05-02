@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const projects = [
   {
     id: "M151",
@@ -62,12 +64,13 @@ export default function ProjectsList() {
             </h1>
           </div>
           <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-            <button
+            <Link
+              to="/projectForm"
               type="button"
               className="block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               Create a Project
-            </button>
+            </Link>
           </div>
         </div>
         <div className="mt-8 flow-root">
@@ -88,12 +91,7 @@ export default function ProjectsList() {
                     >
                       Name
                     </th>
-                  {/*   <th
-                      scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-                    >
-                      Description
-                    </th> */}
+
                     <th
                       scope="col"
                       className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
@@ -131,19 +129,17 @@ export default function ProjectsList() {
                   {projects.map((project) => (
                     <tr key={project.id}>
                       <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm  sm:pl-0">
-                        <a
-                          href="#"
+                        <Link
+                          to={`/projectPage/${project.id}`}
                           className="text-blue-600 font-semibold underline hover:text-blue-900"
                         >
                           {project.id}
-                        </a>
+                        </Link>
                       </td>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                         🏚 {project.name}
                       </td>
-                     {/*  <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.description}
-                      </td> */}
+
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {project.startDate}
                       </td>
@@ -154,12 +150,12 @@ export default function ProjectsList() {
                         {project.status}
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                        <a
-                          href="#"
+                        <Link
+                          to="/projectForm"
                           className="text-blue-600 hover:text-blue-400"
                         >
                           Edit<span className="sr-only">, {project.name}</span>
-                        </a>
+                        </Link>
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <a href="#" className="text-red-600 hover:text-red-400">

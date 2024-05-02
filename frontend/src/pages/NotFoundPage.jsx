@@ -31,7 +31,7 @@ export default function NotFoundPage() {
               </p>
               <div className="mt-10">
                 <a
-                  href="#"
+                  href="/"
                   className="text-sm font-semibold leading-7 text-indigo-600"
                 >
                   <span aria-hidden="true">&larr;</span> Back to home
