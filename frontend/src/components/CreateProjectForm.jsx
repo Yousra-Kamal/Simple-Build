@@ -1,5 +1,3 @@
-
-
 export default function CreateProjectForm() {
   return (
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:px-8 border-solid border-2 border-blue-100   ">
@@ -75,7 +73,7 @@ export default function CreateProjectForm() {
                   </div>
                 </div>
               </div>
-             
+
               <div className="sm:col-span-3">
                 <label
                   htmlFor="status"
@@ -98,7 +96,6 @@ export default function CreateProjectForm() {
                   </select>
                 </div>
               </div>
- 
             </div>
           </div>
         </div>

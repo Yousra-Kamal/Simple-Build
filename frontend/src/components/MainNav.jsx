@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import logo from "../../public/images/logo.png";
-import user from "../../public/images/user.jpg";
+import logo from "/images/logo.png";
+import user from "/images/user.jpg";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

@@ -1,5 +1,5 @@
-import user from "../../public/images/user.jpg";
-import logo from "../../public/images/logo.png";
+import user from "/images/user.jpg";
+import logo from "/images/logo.png";
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
