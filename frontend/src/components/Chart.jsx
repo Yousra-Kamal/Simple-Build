@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const FinancialChart = () => {
+const Chart = () => {
   const chartData = {
     labels: ["Estimated", "Markup", "Expenses"],
     datasets: [
@@ -40,4 +40,4 @@ const FinancialChart = () => {
     </>
   );
 };
-export default FinancialChart;
+export default Chart;

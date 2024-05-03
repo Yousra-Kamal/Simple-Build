@@ -1,4 +1,3 @@
-
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import GridBackground from "./components/ui/GridBackgroun.jsx";
@@ -18,15 +17,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "projectPage/:id",
-        element: <ProjectPage />,
-      },
-      {
         path: "projectForm",
         element: <CreateProjectForm />,
       },
       {
-        path: "projectPage/:id",
+        path: "projectPage/:projectId",
         element: <ProjectPage />,
       },
       {

@@ -12,11 +12,7 @@ const projectTypeDef = `#graphql
         #Project can have many tasks
         tasks: [Task]
     }
-    input ProjectInput {
-        name: String!
-        description: String!
-        status: String!
-    }
+   
    type Query {
         projects: [Project]
         project(projectId: ID!): Project

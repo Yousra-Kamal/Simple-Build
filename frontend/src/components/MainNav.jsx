@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "/images/logo.png";
 import user from "/images/user.jpg";
+import { Link } from "react-router-dom";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -20,32 +21,31 @@ export default function MainNav() {
                   <img
                     className="h-8 w-auto pr-2"
                     src={logo}
-                    alt="Your Company"
+                    alt="SimpleBuild logo"
                   />
                   <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
                     SimpleBuild
                   </h1>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                  <a
-                    href="#"
+                  <Link
+                    href="/"
                     className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
                   >
                     Projects
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                   >
                     Tasks
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="#"
                     className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                   >
                     Calendar
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -109,10 +109,9 @@ export default function MainNav() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 pb-3 pt-2">
-              {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
               <Disclosure.Button
                 as="a"
-                href="#"
+                href="/"
                 className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
               >
                 Projects

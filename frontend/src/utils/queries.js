@@ -14,3 +14,19 @@ export const QUERY_PROJECTS = gql`
     }
   }
 `;
+
+// Important for Query Variables: To successfully execute this GraphQL query, you would need to provide a non-null ID value for the projectId argument. This value is passed using the $projectId variable, which represents the placeholder for the actual value in the query.
+
+export const QUERY_SINGLE_PROJECT = gql`
+  query singleProject($projectId: ID!) {
+    project(projectId: $projectId) {
+      _id
+      projectCode
+      name
+      description
+      status
+      startDate
+      endDate
+    }
+  }
+`;

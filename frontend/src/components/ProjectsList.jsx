@@ -2,37 +2,8 @@
 
 import { Link } from "react-router-dom";
 
-/* const projects = [
-  {
-    id: "M151",
-    name: "Shalvy",
-    description: "Passive House",
-    startDate: "09/02/2024",
-    endDate: "09/02/2025",
-    status: "Construction",
-  },
-  {
-    id: "PR-012",
-    name: "Granny Flat",
-    description: "Passive House",
-    startDate: "09/02/2024",
-    endDate: "09/02/2024",
-    status: "Completed",
-  },
-  {
-    id: "M148",
-    name: "Riverwood",
-    description: "Passive House",
-    startDate: "09/02/2024",
-    endDate: " ",
-    status: "Construction",
-  },
-
-  // More projects...
-]; */
-
 export default function ProjectsList({ projects }) {
-  console.log(projects);
+  /*  console.log(projects); */
 
   if (!projects.length) {
     return (
