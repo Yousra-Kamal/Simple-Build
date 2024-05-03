@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 
 import MainNav from "../components/MainNav";
 import ProjectsList from "../components/ProjectsList";
+import SpinnerLoader from "../components/SpinnerLoader";
 
 import { QUERY_PROJECTS } from "../utils/queries";
 
@@ -15,7 +16,7 @@ export default function HomePage() {
   return (
     <>
       <MainNav />
-      {loading ? <div>Loading...</div> : <ProjectsList projects={projects} />}
+      {loading ? <SpinnerLoader/> : <ProjectsList projects={projects} />}
     </>
   );
 }

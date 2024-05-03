@@ -35,7 +35,13 @@ export default function ProjectsList({ projects }) {
   console.log(projects);
 
   if (!projects.length) {
-    return <h3>No Projects Yet</h3>;
+    return (
+      <>
+        <div className="mx-auto flex justify-center mt-40 max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <h3>No Projects Yet</h3>
+        </div>
+      </>
+    );
   }
 
   return (
