@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
+
 import { Link } from "react-router-dom";
 
-const projects = [
+/* const projects = [
   {
     id: "M151",
     name: "Shalvy",
@@ -23,37 +25,19 @@ const projects = [
     description: "Passive House",
     startDate: "09/02/2024",
     endDate: " ",
-    status: "Construction",
-  },
-  {
-    id: "M151",
-    name: "Shalvy",
-    description: "Passive House",
-    startDate: "09/02/2024",
-    endDate: "09/02/2025",
-    status: "Construction",
-  },
-  {
-    id: "PR-012",
-    name: "Granny Flat",
-    description: "Passive House",
-    startDate: "09/02/2024",
-    endDate: " ",
-    status: "Completed",
-  },
-  {
-    id: "M148",
-    name: "Riverwood",
-    description: "Passive House",
-    startDate: "09/02/2024",
-    endDate: "09/02/2024",
     status: "Construction",
   },
 
   // More projects...
-];
+]; */
 
-export default function ProjectsList() {
+export default function ProjectsList({projects } ) {
+  console.log(projects);
+
+  if (!projects.length) {
+    return <h3>No Projects Yet</h3>;
+  }
+
   return (
     <div className=" flex min-h-full flex-1 flex-col justify-center py-12 lg:px-8">
       <div className="pt-4 bg-white px-4 sm:px-6 lg:px-8">
@@ -127,7 +111,7 @@ export default function ProjectsList() {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                   {projects.map((project) => (
-                    <tr key={project.id}>
+                    <tr key={project._id}>
                       <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm  sm:pl-0">
                         <Link
                           to={`/projectPage/${project.id}`}
@@ -136,15 +120,15 @@ export default function ProjectsList() {
                           {project.id}
                         </Link>
                       </td>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <td  className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                         🏚 {project.name}
                       </td>
 
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.startDate}
+                        {project.createdAt}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.endDate}
+                        {project.updatedAt}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {project.status}
