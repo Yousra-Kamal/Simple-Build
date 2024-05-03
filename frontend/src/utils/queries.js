@@ -5,11 +5,12 @@ export const QUERY_PROJECTS = gql`
   query allProjects {
     projects {
       _id
+      projectCode
       name
       description
-      createdAt
-      updatedAt
       status
+      startDate
+      endDate
     }
   }
 `;

@@ -2,6 +2,11 @@ const { Schema, model } = require("mongoose");
 const { dateFormat } = require("../utils/dateFormat");
 
 const projectSchema = new Schema({
+  projectCode: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   name: {
     type: String,
     required: true,
@@ -10,15 +15,13 @@ const projectSchema = new Schema({
     type: String,
     required: true,
   },
-  createdAt: {
-    type: Date,
+  startDate: {
+    type: String,
     required: true,
-    default: Date.now,
   },
-  updatedAt: {
-    type: Date,
+  endDate: {
+    type: String,
     required: true,
-    default: Date.now,
   },
   status: {
     type: String,

@@ -31,7 +31,7 @@ import { Link } from "react-router-dom";
   // More projects...
 ]; */
 
-export default function ProjectsList({projects } ) {
+export default function ProjectsList({ projects }) {
   console.log(projects);
 
   if (!projects.length) {
@@ -114,21 +114,21 @@ export default function ProjectsList({projects } ) {
                     <tr key={project._id}>
                       <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm  sm:pl-0">
                         <Link
-                          to={`/projectPage/${project.id}`}
+                          to={`/projectPage/${project._id}`}
                           className="text-blue-600 font-semibold underline hover:text-blue-900"
                         >
-                          {project.id}
+                          {project.projectCode}
                         </Link>
                       </td>
-                      <td  className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                         🏚 {project.name}
                       </td>
 
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.createdAt}
+                        {project.startDate}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.updatedAt}
+                        {project.endDate}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {project.status}

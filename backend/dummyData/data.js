@@ -23,59 +23,31 @@ const usersData = [
 // Hardcoded array of 5 projects
 const projectsData = [
   {
-    _id: "1",
-    userId: "1",
+    projectCode: "PR-011",
     name: "Blue Mountains Retreat",
     description:
       "Construction of eco-friendly homes in the picturesque Blue Mountains region of Western Sydney.",
     status: "In Progress",
-    createdAt: "2024-04-25T10:00:00Z",
-    updatedAt: "2024-04-26T15:30:00Z",
-    taskIDs: ["1", "2", "3", "4"],
+    startDate: "15/01/2024",
+    endDate: "15/01/2025",
   },
   {
-    _id: "2",
-    userId: "2",
+    projectCode: "PR-012",
     name: "Parramatta Riverside Residences",
     description:
       "Development of luxury riverside residences in Parramatta, Western Sydney.",
     status: "Completed",
-    createdAt: "2024-02-15T11:30:00Z",
-    updatedAt: "2024-04-01T16:00:00Z",
-    taskIDs: ["5", "6", "7"],
+    startDate: "09/02/2023",
+    endDate: "09/02/2024",
   },
   {
-    _id: "3",
-    userId: "3",
+    projectCode: "M151",
     name: "Blacktown Hills Estate",
     description:
       "Construction of hillside residences with expansive views in the Blacktown area of Western Sydney.",
     status: "Planning",
-    createdAt: "2024-04-25T10:00:00Z",
-    updatedAt: "2024-04-26T15:30:00Z",
-    taskIDs: ["8", "9", "10"],
-  },
-  {
-    _id: "4",
-    userId: "1",
-    name: "Penrith Lakeside Retreat",
-    description:
-      "Building a community of lakeside homes in Penrith, Western Sydney, offering a tranquil lifestyle.",
-    status: "In Progress",
-    createdAt: "2024-04-25T10:00:00Z",
-    updatedAt: "2024-04-26T15:30:00Z",
-    taskIDs: ["11"],
-  },
-  {
-    _id: "5",
-    userId: "2",
-    name: "Liverpool Greenview Villas",
-    description:
-      "Development of green-themed villas in Liverpool, Western Sydney, emphasizing sustainability.",
-    status: "Completed",
-    createdAt: "2024-03-01T12:00:00Z",
-    updatedAt: "2024-04-15T11:20:00Z",
-    taskIDs: [],
+    startDate: "25/04/2024",
+    endDate: "25/04/2025",
   },
 ];
 

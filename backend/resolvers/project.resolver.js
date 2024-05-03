@@ -1,5 +1,4 @@
 const { Project, Task, User } = require("../models");
-const { create } = require("../models/User.js");
 
 const { signToken, AuthenticationError } = require("../utils/auth.js");
 
@@ -15,7 +14,7 @@ const projectResolver = {
   Mutation: {
     createProject: async (
       _,
-      { username, name, description, status },
+      { username, name, description, status, projectCode, startDate, endDate },
       context
     ) => {
       const project = await Project.create({
@@ -23,6 +22,9 @@ const projectResolver = {
         name,
         description,
         status,
+        projectCode,
+        startDate,
+        endDate,
       });
 
       await User.findOneAndUpdate(
