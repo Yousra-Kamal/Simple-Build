@@ -18,7 +18,8 @@ const projectTypeDef = `#graphql
         project(projectId: ID!): Project
     }
    type Mutation {
-        createProject(username: String!, name:String!, description:String!, status:String!,projectCode:String!, startDate:String!, endDate:String!): Project
+        createProject(name:String!, description:String!, status:String!,projectCode:String!, startDate:String!, endDate:String!, 
+        ): Project
         updateProject(input: updateProjectInput!): Project
         deleteProject(projectId: ID!): Project
     }

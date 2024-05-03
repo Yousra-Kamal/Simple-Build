@@ -14,25 +14,17 @@ const projectResolver = {
   Mutation: {
     createProject: async (
       _,
-      { username, name, description, status, projectCode, startDate, endDate },
-      context
+      { name, description, status, projectCode, startDate, endDate, userId }
     ) => {
-      const project = await Project.create({
-        username,
+      return Project.create({
         name,
         description,
         status,
         projectCode,
         startDate,
         endDate,
+        userId,
       });
-
-      await User.findOneAndUpdate(
-        { username: username },
-        { $addToSet: { projects: project._id } }
-      );
-
-      return project;
     },
 
     updateProject: async (_, { input }) => {

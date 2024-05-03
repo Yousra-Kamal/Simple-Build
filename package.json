@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
- 
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js",
     "develop": "concurrently \"npm run start\" \"cd frontend && npm start\""
-   
   },
   "keywords": [],
   "author": "",
@@ -21,12 +19,13 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-session": "^1.18.0",
+    "flowbite": "^2.3.0",
     "graphql": "^16.8.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0",
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.0"
   }
 }

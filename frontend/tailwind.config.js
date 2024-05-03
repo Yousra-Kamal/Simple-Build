@@ -3,12 +3,17 @@ import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColo
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
+  ],
   darkMode: "class",
   theme: {
     // rest of the code
   },
   plugins: [
+    "flowbite/plugin",
     "@tailwindcss/forms",
     addVariablesForColors,
     function ({ matchUtilities, theme }) {
