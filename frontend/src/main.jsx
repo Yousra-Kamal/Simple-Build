@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 import CreateProjectForm from "./components/CreateProjectForm.jsx";
+import CreateFormPage from "./pages/CreateFormPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       {
         path: "projectForm",
-        element: <CreateProjectForm />,
+        element: <CreateFormPage />,
       },
       {
         path: "projectPage/:projectId",

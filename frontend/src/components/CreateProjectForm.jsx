@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
-import MainNav from "./MainNav";
 
 import { CREATE_PROJECT } from "../utils/mutations";
 import { QUERY_PROJECTS } from "../utils/queries";
@@ -56,8 +55,7 @@ export default function CreateProjectForm() {
 
   return (
     <>
-      <MainNav />
-      <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+      <div className=" px-6 py-24 sm:py-32 lg:px-8">
         <div
           className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
           aria-hidden="true"
