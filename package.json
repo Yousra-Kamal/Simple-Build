@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+ 
     "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js"
+    "dev": "nodemon backend/index.js",
+    "develop": "concurrently \"npm run start\" \"cd frontend && npm start\""
+   
   },
   "keywords": [],
   "author": "",
@@ -23,6 +26,7 @@
     "mongoose": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "concurrently": "^8.2.2"
   }
 }

@@ -38,7 +38,19 @@ export default function ProjectsList({ projects }) {
     return (
       <>
         <div className="mx-auto flex justify-center mt-40 max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <h3>No Projects Yet</h3>
+          <h1 className=" font-serif font-extrabold text-2xl drop-shadow-xl text-blue-800 tracking-tight">
+            No Projects Yet
+          </h1>
+
+          <div className="ml-6">
+            <Link
+              to="/projectForm"
+              type="button"
+              className="block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              Create a Project
+            </Link>
+          </div>
         </div>
       </>
     );
