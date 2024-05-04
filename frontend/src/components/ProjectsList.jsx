@@ -1,10 +1,27 @@
 /* eslint-disable react/prop-types */
+import { useMutation } from "@apollo/client";
+import { DELETE_PROJECT } from "../utils/mutations";
+import { QUERY_PROJECTS } from "../utils/queries";
 
 import { Link } from "react-router-dom";
 
 export default function ProjectsList({ projects }) {
-  /*  console.log(projects); */
+  // Define the deleteProject mutation
+  const [deleteProject, { error }] = useMutation(DELETE_PROJECT, {
+    refetchQueries: [{ query: QUERY_PROJECTS }],
+  });
+  const handleDeleteProject = async (projectId) => {
+    try {
+      const { data } = await deleteProject({
+        variables: { projectId },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
+
+  // If there are no projects, display a message prompting the user to create a project
   if (!projects.length) {
     return (
       <>
@@ -131,10 +148,12 @@ export default function ProjectsList({ projects }) {
                         </Link>
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                        <a href="#" className="text-red-600 hover:text-red-400">
+                        <button
+                          className="text-red-600 hover:text-red-400"
+                          onClick={() => handleDeleteProject(project._id)}
+                        >
                           Delete
-                          <span className="sr-only">, {project.name}</span>
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   ))}
