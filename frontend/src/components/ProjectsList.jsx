@@ -7,11 +7,13 @@ import { Link } from "react-router-dom";
 
 export default function ProjectsList({ projects }) {
   // Define the deleteProject mutation
+  // eslint-disable-next-line no-unused-vars
   const [deleteProject, { error }] = useMutation(DELETE_PROJECT, {
     refetchQueries: [{ query: QUERY_PROJECTS }],
   });
   const handleDeleteProject = async (projectId) => {
     try {
+      // eslint-disable-next-line no-unused-vars
       const { data } = await deleteProject({
         variables: { projectId },
       });
@@ -19,7 +21,6 @@ export default function ProjectsList({ projects }) {
       console.error(e);
     }
   };
-
 
   // If there are no projects, display a message prompting the user to create a project
   if (!projects.length) {
@@ -141,10 +142,10 @@ export default function ProjectsList({ projects }) {
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                         <Link
-                          to="/projectForm"
+                          to={`/updateprojectForm/${project._id}`}
                           className="text-blue-600 hover:text-blue-400"
                         >
-                          Edit<span className="sr-only">, {project.name}</span>
+                          Edit<span className="sr-only">, {project._id}</span>
                         </Link>
                       </td>
                       <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">

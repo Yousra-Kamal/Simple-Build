@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
-import CreateProjectForm from "./components/CreateProjectForm.jsx";
+import UpdateProjectForm from "./components/UpdateProjectForm.jsx";
 import CreateFormPage from "./pages/CreateFormPage.jsx";
 
 const router = createBrowserRouter([
@@ -26,8 +26,8 @@ const router = createBrowserRouter([
         element: <ProjectPage />,
       },
       {
-        path: "projectForm",
-        element: <CreateProjectForm />,
+        path: "updateprojectForm/:projectId",
+        element: <UpdateProjectForm/>,
       },
     ],
   },

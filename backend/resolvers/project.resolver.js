@@ -27,8 +27,22 @@ const projectResolver = {
       });
     },
 
-    updateProject: async (_, { input }) => {
-      return Project.findByIdAndUpdate(input.projectId, input, { new: true });
+    updateProject: async (
+      _,
+      { projectId, name, description, status, projectCode, startDate, endDate }
+    ) => {
+      return Project.findByIdAndUpdate(
+        projectId,
+        {
+          name,
+          description,
+          status,
+          projectCode,
+          startDate,
+          endDate,
+        },
+        { new: true } // returns the updated document
+      );
     },
 
     deleteProject: async (_, { projectId }) => {

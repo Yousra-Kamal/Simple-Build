@@ -20,16 +20,21 @@ const projectTypeDef = `#graphql
    type Mutation {
         createProject(name:String!, description:String!, status:String!,projectCode:String!, startDate:String!, endDate:String!, 
         ): Project
-        updateProject(input: updateProjectInput!): Project
+
+        updateProject(
+            projectId: ID!
+            name: String
+            description: String
+            status: String
+            projectCode: String
+            startDate: String
+            endDate: String
+         ): Project
+
         deleteProject(projectId: ID!): Project
     }
 
-    input updateProjectInput {
-        projectId: ID!
-        name: String
-        description: String
-        status: String
-    }
+    
 `;
 
 module.exports = projectTypeDef;
