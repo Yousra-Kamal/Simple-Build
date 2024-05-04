@@ -50,7 +50,7 @@ export default function CreateProjectForm() {
   };
 
   const redirect = () => {
-    window.location.replace("/");
+    window.location.replace("/allProjects");
   };
 
   return (

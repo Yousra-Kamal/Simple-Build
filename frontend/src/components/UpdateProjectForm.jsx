@@ -79,7 +79,7 @@ export default function UpdateProjectForm() {
 
   // Redirect to the homepageProjectLists after updating the project
   const redirect = () => {
-    window.location.href = "/";
+    window.location.href = "/allProjects";
   };
 
   return (

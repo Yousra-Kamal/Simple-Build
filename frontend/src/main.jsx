@@ -9,6 +9,7 @@ import HomePage from "./pages/HomePage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 import UpdateProjectForm from "./components/UpdateProjectForm.jsx";
 import CreateFormPage from "./pages/CreateFormPage.jsx";
+import AllProjects from "./pages/AllProjects.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,17 +18,18 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <HomePage /> },
-      {
-        path: "projectForm",
-        element: <CreateFormPage />,
-      },
+      {path: "allProjects", element: <AllProjects/>},
       {
         path: "projectPage/:projectId",
         element: <ProjectPage />,
       },
       {
+        path: "projectForm",
+        element: <CreateFormPage />,
+      },
+      {
         path: "updateprojectForm/:projectId",
-        element: <UpdateProjectForm/>,
+        element: <UpdateProjectForm />,
       },
     ],
   },
