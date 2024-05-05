@@ -10,6 +10,8 @@ import ProjectPage from "./pages/ProjectPage.jsx";
 import UpdateProjectForm from "./components/UpdateProjectForm.jsx";
 import CreateFormPage from "./pages/CreateFormPage.jsx";
 import AllProjects from "./pages/AllProjects.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import SignupPage from "./pages/SignupPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,9 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <HomePage /> },
+      {path: "signup", element: <SignupPage/>},
+      {path: "login", element: <LoginPage/>},
+
       {path: "allProjects", element: <AllProjects/>},
       {
         path: "projectPage/:projectId",

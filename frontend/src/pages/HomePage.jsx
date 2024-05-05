@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import house from "../../public/images/house.jpeg";
 import logo from "../../public/images/logo.png";
 import house2 from "../../public/images/house2.jpeg";
@@ -5,11 +6,11 @@ import house2 from "../../public/images/house2.jpeg";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const navigation = [
-  { name: "Projexts", href: "#" },
+  { name: "Projects", href: "#" },
   { name: "Features", href: "#" },
-
   { name: "Company", href: "#" },
 ];
 
@@ -118,25 +119,26 @@ export default function Example() {
                   SimpleBuild
                 </h1>
                 <p className="mt-6 text-lg leading-8 text-gray-600">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                  occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non
-                  deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit
-                  sunt amet fugiat veniam occaecat fugiat aliqua.
+                  SimpleBuild is a revolutionary platform that empowers users to
+                  easily create and manage construction projects. Our intuitive
+                  interface allows you to plan, track, and collaborate on
+                  projects with ease. Say goodbye to paperwork and complex
+                  software—join SimpleBuild and streamline your construction
+                  management today.
                 </p>
                 <div className="mt-10 flex items-center gap-x-6">
-                  <a
-                    href="#"
+                  <Link
+                    to="/signup"
                     className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     Sign up
-                  </a>
-                  <a
-                    href="/allProjects"
+                  </Link>
+                  <Link
+                    to="/login"
                     className="text-sm font-semibold leading-6 text-gray-900"
                   >
                     Login<span aria-hidden="true">→</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

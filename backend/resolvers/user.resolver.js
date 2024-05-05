@@ -6,7 +6,7 @@ const { json } = require("express");
 const userResolver = {
   Query: {
     users: async () => {
-      console.log("projects", JSON.stringify(projectsData));
+      /*  console.log("projects", JSON.stringify(projectsData)); */
       return User.find()
         .populate("projects")
         .populate({ path: "projects", populate: "tasks" });
@@ -21,14 +21,18 @@ const userResolver = {
     addUser: async (_, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
+      console.log("user added successfully", user);
       return { token, user };
     },
     login: async (_, { email, password }) => {
+      // find user by email address and check if the user exists
       const user = await User.findOne({ email });
+      // if user is not found throw an error
       if (!user) {
         throw AuthenticationError;
       }
 
+      // check if the password is correct
       const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
@@ -36,7 +40,7 @@ const userResolver = {
       }
 
       const token = signToken(user);
-
+      console.log("user logged in successfully", user);
       return { token, user };
     },
     logout: async () => {
