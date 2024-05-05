@@ -8,7 +8,8 @@ import NotFoundPage from "./pages/NotFoundPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
 import UpdateProjectForm from "./components/UpdateProjectForm.jsx";
-import CreateFormPage from "./pages/CreateFormPage.jsx";
+import UpdateProjectPage from "./pages/UpdateProjectPage.jsx";
+import CreateProjectPage from "./pages/CreateProjectPage.jsx";
 import AllProjects from "./pages/AllProjects.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
@@ -30,11 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "projectForm",
-        element: <CreateFormPage />,
+        element: <CreateProjectPage />,
       },
       {
         path: "updateprojectForm/:projectId",
-        element: <UpdateProjectForm />,
+        element: <UpdateProjectPage />,
       },
     ],
   },

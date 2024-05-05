@@ -63,6 +63,16 @@ export default function UpdateProjectForm() {
     } catch (e) {
       console.error(e);
     }
+
+    // Clear the form
+    setFormState({
+      name: "",
+      description: "",
+      status: "",
+      projectCode: "",
+      startDate: "",
+      endDate: "",
+    });
   };
 
   const handleChange = (event) => {
@@ -102,7 +112,7 @@ export default function UpdateProjectForm() {
             Update Project
           </h2>
           <p className="mt-2 text-lg leading-8 text-gray-600">
-            Fill in the form below to update a project.
+            Update the project details below
           </p>
         </div>
         {/*Create Project Form  */}
@@ -123,6 +133,7 @@ export default function UpdateProjectForm() {
                   type="text"
                   name="name"
                   id="name"
+                  value={formState.name}
                   onChange={handleChange}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
@@ -141,6 +152,7 @@ export default function UpdateProjectForm() {
                   name="projectCode"
                   id="projectCode"
                   onChange={handleChange}
+                  value={formState.projectCode}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -159,8 +171,8 @@ export default function UpdateProjectForm() {
                   id="description"
                   rows={4}
                   onChange={handleChange}
+                  value={formState.description}
                   className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-                  defaultValue={""}
                 />
               </div>
             </div>
@@ -192,6 +204,7 @@ export default function UpdateProjectForm() {
                     name="startDate"
                     type="text"
                     onChange={handleChange}
+                    value={formState.startDate}
                     className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select date start"
                   />
@@ -214,6 +227,7 @@ export default function UpdateProjectForm() {
                     name="endDate"
                     type="text"
                     onChange={handleChange}
+                    value={formState.endDate}
                     className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select date end"
                   />
@@ -234,14 +248,15 @@ export default function UpdateProjectForm() {
                   name="status"
                   autoComplete="status"
                   onChange={handleChange}
+                  value={formState.status}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
-                  <option></option>
-                  <option>Sales</option>
-                  <option>Presales</option>
-                  <option>Construction</option>
-                  <option>Warranty </option>
-                  <option>Completed </option>
+                  <option value="">Select Status</option>
+                  <option value="Sales">Sales</option>
+                  <option value="Presales">Presales</option>
+                  <option value="Construction">Construction</option>
+                  <option value="Warranty">Warranty</option>
+                  <option value="Completed">Completed</option>
                 </select>
               </div>
             </div>

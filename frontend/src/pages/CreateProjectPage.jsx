@@ -1,7 +1,7 @@
 import CreateProjectForm from "../components/CreateProjectForm";
 import MainNav from "../components/MainNav";
 
-export default function CreateFormPage() {
+export default function CreateProjectPage() {
   return (
     <>
       <MainNav />
