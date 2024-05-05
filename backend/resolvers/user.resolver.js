@@ -1,7 +1,7 @@
 const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth.js");
 const { usersData, projectsData, tasksData } = require("../dummyData/data.js");
-const { json } = require("express");
+
 
 const userResolver = {
   Query: {
