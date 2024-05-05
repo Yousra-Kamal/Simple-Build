@@ -1,7 +1,63 @@
+/* eslint-disable no-unused-vars */
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
+
 import { Link } from "react-router-dom";
-import logo from "/images/logo.png"
+import logo from "/images/logo.png";
 
 export default function SignupPage() {
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const [addUser, { error , data }] = useMutation(ADD_USER);
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      if (error) {
+        throw new Error("Failed to sign up.");
+      } else {  
+        setErrorMessage("");
+      }
+
+      Auth.login(data.addUser.token);
+    } catch (error) {
+      if (error.message.includes("E11000 duplicate key error")) {
+        setErrorMessage("This email address is already registered.");
+      } else {
+        setErrorMessage("Failed to sign up. Please try again later.");
+      }
+    }
+
+    setFormState({
+      username: "",
+      email: "",
+      password: "",
+    });
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -17,8 +73,8 @@ export default function SignupPage() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <div className=" bg-gray-200  px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action="#" method="POST">
+          <div className="bg-gray-200  px-6 py-12 shadow sm:rounded-lg sm:px-12">
+            <form  onSubmit={handleFormSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="username"
@@ -31,8 +87,11 @@ export default function SignupPage() {
                     id="username"
                     name="username"
                     type="username"
+                    autoComplete="username"
+                    value={formState.username}
+                    onChange={handleChange}
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -49,8 +108,10 @@ export default function SignupPage() {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    value={formState.email}
+                    onChange={handleChange}
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -69,9 +130,11 @@ export default function SignupPage() {
                     id="password"
                     name="password"
                     type="password"
+                    value={formState.password}
+                    onChange={handleChange}
                     autoComplete="current-password"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                    className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -85,6 +148,9 @@ export default function SignupPage() {
                 </button>
               </div>
             </form>
+            {error && (
+              <p className="mt-3 text-red-500 text-sm">{errorMessage}</p>
+            )}
           </div>
           <p className="mt-10 text-center text-sm text-gray-500">
             Have an account?{" "}

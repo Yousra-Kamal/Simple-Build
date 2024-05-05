@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import logo from "/images/logo.png";
 
@@ -9,6 +10,7 @@ import Auth from "../utils/auth";
 export default function LoginPage(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -32,6 +34,7 @@ export default function LoginPage(props) {
 
       Auth.login(data.login.token);
     } catch (e) {
+      setErrorMessage("Invalid email or password"); // Set error message on login failure
       console.error(e);
     }
     // clear form values
@@ -74,7 +77,7 @@ export default function LoginPage(props) {
                     onChange={handleChange}
                     autoComplete="email"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -93,9 +96,11 @@ export default function LoginPage(props) {
                     id="password"
                     name="password"
                     type="password"
+                    value={formState.password}
+                    onChange={handleChange}
                     autoComplete="current-password"
                     required
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+                    className="pl-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -109,6 +114,9 @@ export default function LoginPage(props) {
                 </button>
               </div>
             </form>
+            {error && (
+              <p className="mt-3 text-red-500 text-sm">{errorMessage}</p>
+            )}
           </div>
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{" "}

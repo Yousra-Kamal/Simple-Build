@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import house from "../../public/images/house.jpeg";
-import logo from "../../public/images/logo.png";
-import house2 from "../../public/images/house2.jpeg";
+import house from "/images/house.jpeg";
+import logo from "/images/logo.png";
+import house2 from "/images/house2.jpeg";
 
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";

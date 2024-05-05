@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import GridBackground from "./components/ui/GridBackgroun.jsx";
@@ -7,7 +8,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProjectPage from "./pages/ProjectPage.jsx";
-import UpdateProjectForm from "./components/UpdateProjectForm.jsx";
 import UpdateProjectPage from "./pages/UpdateProjectPage.jsx";
 import CreateProjectPage from "./pages/CreateProjectPage.jsx";
 import AllProjects from "./pages/AllProjects.jsx";
