@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 import { CREATE_PROJECT } from "../utils/mutations";
 import { QUERY_PROJECTS } from "../utils/queries";
 import { Link } from "react-router-dom";
 
 export default function CreateProjectForm() {
+  const navigate = useNavigate();
+
   const [formState, setFormState] = useState({
     name: "",
     description: "",
@@ -27,19 +30,11 @@ export default function CreateProjectForm() {
       const { data } = await createProject({
         variables: { ...formState },
       });
-
-      console.log("new project", data);
     } catch (e) {
       console.error(e);
     }
-    setFormState({
-      name: "",
-      description: "",
-      status: "",
-      projectCode: "",
-      startDate: "",
-      endDate: "",
-    });
+
+    navigate("/projects");
   };
 
   const handleChange = (event) => {
@@ -50,10 +45,6 @@ export default function CreateProjectForm() {
       [name]: value,
     });
   };
-
-  /* const redirect = () => {
-    window.location.replace("/allProjects");
-  }; */
 
   return (
     <>
@@ -238,7 +229,7 @@ export default function CreateProjectForm() {
               Create project
             </button>
             <Link
-              to="/allProjects"
+              to="/projects"
               className="text-blue-600 text-sm font-semibold flex items-center mt-2.5"
             >
               <svg

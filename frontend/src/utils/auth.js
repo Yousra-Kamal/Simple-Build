@@ -37,7 +37,7 @@ class AuthService {
     // Saves user token to localStorage (sets token in localStorage to keep user logged in on page refresh)
     // return the user to the projectpage after login
     localStorage.setItem("id_token", idToken);
-    window.location.assign("/allProjects");
+    window.location.assign("/projects");
   }
 
   logout() {

@@ -11,7 +11,6 @@ import TaskTable from "../components/TaskTable";
 
 export default function ProjectPage() {
   const { projectId } = useParams();
-  console.log(projectId);
 
   const { loading, data } = useQuery(QUERY_SINGLE_PROJECT, {
     variables: { projectId: projectId },
@@ -23,7 +22,6 @@ export default function ProjectPage() {
     return <SpinnerLoader />;
   }
 
-  console.log(project);
   return (
     <>
       <ProjectPageSidebar />

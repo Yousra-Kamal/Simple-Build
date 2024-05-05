@@ -4,8 +4,10 @@ const { signToken, AuthenticationError } = require("../utils/auth.js");
 
 const projectResolver = {
   Query: {
-    projects: async () => {
-      return Project.find({}).populate("tasks");
+    projects: async (parents, args, context) => {
+      return Project.find({
+        userId: context.user._id,
+      }).populate("tasks");
     },
     project: async (_, { projectId }) => {
       return Project.findById(projectId).populate("tasks");
@@ -14,7 +16,8 @@ const projectResolver = {
   Mutation: {
     createProject: async (
       _,
-      { name, description, status, projectCode, startDate, endDate, userId }
+      { name, description, status, projectCode, startDate, endDate },
+      context
     ) => {
       return Project.create({
         name,
@@ -23,7 +26,7 @@ const projectResolver = {
         projectCode,
         startDate,
         endDate,
-        userId,
+        userId: context.user._id.toString(),
       });
     },
 
@@ -49,14 +52,14 @@ const projectResolver = {
       return Project.findByIdAndDelete(projectId);
     },
   },
-  Project: {
+  /*  Project: {
     user: async (parent) => {
       return User.findById(parent.userId);
     },
     tasks: async (parent) => {
       return Task.find({ projectId: parent._id });
     },
-  },
+  }, */
 };
 
 module.exports = projectResolver;

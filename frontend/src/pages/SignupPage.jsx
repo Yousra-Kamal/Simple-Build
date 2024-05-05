@@ -14,7 +14,7 @@ export default function SignupPage() {
     password: "",
   });
 
-  const [addUser, { error , data }] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -29,7 +29,6 @@ export default function SignupPage() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     try {
       const { data } = await addUser({
@@ -38,7 +37,7 @@ export default function SignupPage() {
 
       if (error) {
         throw new Error("Failed to sign up.");
-      } else {  
+      } else {
         setErrorMessage("");
       }
 
@@ -74,7 +73,7 @@ export default function SignupPage() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="bg-gray-200  px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form  onSubmit={handleFormSubmit} className="space-y-6">
+            <form onSubmit={handleFormSubmit} className="space-y-6">
               <div>
                 <label
                   htmlFor="username"

@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
+import { useNavigate } from "react-router-dom";
 
 import { QUERY_PROJECTS } from "../utils/queries";
 import { UPDATE_PROJECT } from "../utils/mutations";
 
 export default function UpdateProjectForm() {
+  const navigate = useNavigate();
   // Get the project id from the URL path using the useParams hook
   const { projectId } = useParams();
 
@@ -63,16 +65,7 @@ export default function UpdateProjectForm() {
     } catch (e) {
       console.error(e);
     }
-
-    // Clear the form
-    setFormState({
-      name: "",
-      description: "",
-      status: "",
-      projectCode: "",
-      startDate: "",
-      endDate: "",
-    });
+    navigate("/projects");
   };
 
   const handleChange = (event) => {
@@ -88,9 +81,6 @@ export default function UpdateProjectForm() {
   };
 
   // Redirect to the homepageProjectLists after updating the project
-  const redirect = () => {
-    window.location.href = "/allProjects";
-  };
 
   return (
     <>
@@ -263,7 +253,6 @@ export default function UpdateProjectForm() {
           </div>
           <div className="mt-10">
             <button
-              onClick={redirect}
               type="submit"
               className="block w-full rounded-md bg-blue-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >

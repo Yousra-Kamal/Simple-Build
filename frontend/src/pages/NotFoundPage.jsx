@@ -27,7 +27,10 @@ export default function NotFoundPage() {
                 Sorry, we couldn’t find the page you’re looking for.
               </p>
               <div className="mt-10">
-                <Link className="text-sm font-semibold leading-7 text-indigo-600">
+                <Link
+                  to="/projects"
+                  className="text-sm font-semibold leading-7 text-indigo-600"
+                >
                   <span aria-hidden="true">&larr;</span> Back to home
                 </Link>
               </div>

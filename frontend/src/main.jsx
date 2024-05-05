@@ -1,6 +1,10 @@
 /* eslint-disable no-unused-vars */
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  createRoutesFromElements,
+} from "react-router-dom";
 import GridBackground from "./components/ui/GridBackgroun.jsx";
 import App from "./App.jsx";
 import "./index.css";
@@ -13,33 +17,27 @@ import CreateProjectPage from "./pages/CreateProjectPage.jsx";
 import AllProjects from "./pages/AllProjects.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <NotFoundPage />,
-    children: [
-      { index: true, element: <HomePage /> },
-      {path: "signup", element: <SignupPage/>},
-      {path: "login", element: <LoginPage/>},
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<App />} errorElement={<NotFoundPage />}>
+      <Route path="/" element={<HomePage />} />
+      <Route path="login" element={<LoginPage />} />
+      <Route path="signup" element={<SignupPage />} />
 
-      {path: "allProjects", element: <AllProjects/>},
-      {
-        path: "projectPage/:projectId",
-        element: <ProjectPage />,
-      },
-      {
-        path: "projectForm",
-        element: <CreateProjectPage />,
-      },
-      {
-        path: "updateprojectForm/:projectId",
-        element: <UpdateProjectPage />,
-      },
-    ],
-  },
-]);
+      <Route element={<ProtectedRoute />}>
+        <Route path="projects" element={<AllProjects />} />
+        <Route path="projectPage/:projectId" element={<ProjectPage />} />
+        <Route
+          path="updateprojectForm/:projectId"
+          element={<UpdateProjectPage />}
+        />
+        <Route path="projectForm" element={<CreateProjectPage />} />
+      </Route>
+    </Route>
+  )
+);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />

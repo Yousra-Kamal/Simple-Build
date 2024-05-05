@@ -8,7 +8,7 @@ const projectTypeDef = `#graphql
         startDate: String!
         endDate: String!
         #Project must be associated with a user
-        user: User!
+        userId: String!
         #Project can have many tasks
         tasks: [Task]
     }

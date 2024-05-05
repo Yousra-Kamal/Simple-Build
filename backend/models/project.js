@@ -27,9 +27,9 @@ const projectSchema = new Schema({
     type: String,
     required: true,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+  userId: {
+    type: String,
+    required: true,
   },
   tasks: [
     {
