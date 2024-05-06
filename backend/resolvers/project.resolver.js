@@ -10,8 +10,11 @@ const projectResolver = {
       }
       throw AuthenticationError;
     },
-    project: async (_, { projectId }) => {
-      return Project.findById(projectId).populate("tasks");
+    project: async (_, { projectId }, context) => {
+      if (context.user) {
+        return Project.findById(projectId);
+      }
+      throw AuthenticationError;
     },
   },
   Mutation: {

@@ -2,24 +2,16 @@ import { gql } from "@apollo/client";
 
 // User Queries
 
-export const QUERY_SINGLE_USER = gql`
-  query singleUser($userId: ID!) {
-    user(userId: $userId) {
-      email
-      password
+export const QUERY_USER = gql`
+  query user {
+    user {
+      _id
       username
-      projects {
-        _id
-        description
-        endDate
-        name
-        projectCode
-        startDate
-        status
-      }
+      email
     }
   }
 `;
+ 
 
 // Project Queries
 

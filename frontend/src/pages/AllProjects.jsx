@@ -17,12 +17,10 @@ export default function AllProjects() {
   if (loading) {
     return <SpinnerLoader />;
   }
-  return <ProjectsList list={projects} />;
-
-  // return (
-  //   <>
-  //     <MainNav />
-  //     {loading ? <SpinnerLoader /> : <ProjectsList projects={projects} />}
-  //   </>
-  // );
+  return (
+    <>
+      <MainNav />
+      <ProjectsList list={projects} />
+    </>
+  );
 }

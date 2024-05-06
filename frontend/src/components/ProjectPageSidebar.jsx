@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { NavLink } from "react-router-dom";
-import user from "/images/user.jpg";
+import userlogo from "/images/user.jpg";
 import logo from "/images/logo.png";
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
@@ -26,9 +26,14 @@ import {
   MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
 
+import Auth from "../utils/auth";
+
+import { useQuery } from "@apollo/client";
+import { QUERY_USER } from "../utils/queries";
+
 const navigation = [
   { name: "Overview", href: "#", icon: ComputerDesktopIcon, current: true },
-  { name: "Projects", href: "/", icon: HomeIcon, current: false },
+  { name: "Projects", href: "/projects", icon: HomeIcon, current: false },
   { name: "Tasks", href: "#", icon: RectangleGroupIcon, current: false },
   { name: "Estimate", href: "#", icon: CalculatorIcon, current: false },
   {
@@ -57,7 +62,7 @@ const navigation = [
   { name: "Team", href: "#", icon: UsersIcon, current: false },
 ];
 
-const userNavigation = [{ name: "Sign out", href: "#" }];
+const userNavigation = [{ name: "Sign out" }];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -65,6 +70,16 @@ function classNames(...classes) {
 
 export default function ProjectPageSidebar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const { loading, data } = useQuery(QUERY_USER);
+  const userdata = data?.user || {};
+
+  console.log("USER",userdata);
+
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <div>
@@ -126,7 +141,7 @@ export default function ProjectPageSidebar() {
                     <img
                       className="h-8 w-auto pr-2 "
                       src={logo}
-                      alt="Your Company"
+                      alt="simplebuild logo"
                     />
                     <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
                       SimpleBuild
@@ -239,7 +254,7 @@ export default function ProjectPageSidebar() {
                   <span className="sr-only">Open user menu</span>
                   <img
                     className="h-8 w-8 rounded-full bg-gray-50"
-                    src={user}
+                    src={userlogo}
                     alt="usre logo"
                   />
                   <span className="hidden lg:flex lg:items-center">
@@ -247,7 +262,7 @@ export default function ProjectPageSidebar() {
                       className="ml-4 text-sm font-semibold leading-6 text-gray-900"
                       aria-hidden="true"
                     >
-                      Ibrahim
+                      {userdata.username}
                     </span>
                     <ChevronDownIcon
                       className="ml-2 h-5 w-5 text-gray-400"
@@ -268,15 +283,15 @@ export default function ProjectPageSidebar() {
                     {userNavigation.map((item) => (
                       <Menu.Item key={item.name}>
                         {({ active }) => (
-                          <a
-                            href={item.href}
+                          <button
+                            onClick={logout}
                             className={classNames(
                               active ? "bg-gray-50" : "",
                               "block px-3 py-1 text-sm leading-6 text-gray-900"
                             )}
                           >
                             {item.name}
-                          </a>
+                          </button>
                         )}
                       </Menu.Item>
                     ))}

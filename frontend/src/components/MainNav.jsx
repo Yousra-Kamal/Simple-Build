@@ -5,11 +5,25 @@ import logo from "/images/logo.png";
 import user from "/images/user.jpg";
 import { Link } from "react-router-dom";
 
+import { useQuery } from "@apollo/client";
+import { QUERY_USER } from "../utils/queries";
+
+import Auth from "../utils/auth";
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function MainNav() {
+
+  const { loading, data } = useQuery(QUERY_USER);
+  const userdata = data?.user || {};
+
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -56,7 +70,7 @@ export default function MainNav() {
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
                       <h1 className="text-sm font-semibold text-gray-900 pt-2 pr-2">
-                        Ibrahim
+                        {userdata.username}
                       </h1>
                       <img
                         className="h-8 w-8 rounded-full"
@@ -77,15 +91,15 @@ export default function MainNav() {
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="#"
+                          <button
+                            onClick={logout}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
                             Sign out
-                          </a>
+                          </button>
                         )}
                       </Menu.Item>
                     </Menu.Items>
@@ -140,17 +154,16 @@ export default function MainNav() {
                 </div>
                 <div className="ml-3">
                   <div className="text-base font-medium text-gray-800">
-                    Ibrahim
+                    {userdata.username}
                   </div>
                   <div className="text-sm font-medium text-gray-500">
-                    tom@example.com
+                    {userdata.email}
                   </div>
                 </div>
               </div>
               <div className="mt-3 space-y-1">
                 <Disclosure.Button
-                  as="a"
-                  href="#"
+                  onClick={logout}
                   className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                 >
                   Sign out

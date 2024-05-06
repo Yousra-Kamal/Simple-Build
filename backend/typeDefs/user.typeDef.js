@@ -17,7 +17,6 @@ type Auth {
   }
 
 type Query {
-    users: [User]
     user: User  
   }
 
