@@ -5,17 +5,17 @@ import { gql } from "@apollo/client";
 export const QUERY_SINGLE_USER = gql`
   query singleUser($userId: ID!) {
     user(userId: $userId) {
-      _id
-      username
       email
+      password
+      username
       projects {
         _id
-        projectCode
-        name
         description
-        status
-        startDate
         endDate
+        name
+        projectCode
+        startDate
+        status
       }
     }
   }
@@ -28,12 +28,12 @@ export const QUERY_PROJECTS = gql`
   query allProjects {
     projects {
       _id
-      projectCode
       name
-      description
+      projectCode
       status
       startDate
       endDate
+      description
     }
   }
 `;

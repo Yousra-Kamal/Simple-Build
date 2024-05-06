@@ -5,7 +5,6 @@ const projectSchema = new Schema({
   projectCode: {
     type: String,
     required: true,
-    unique: true,
   },
   name: {
     type: String,
@@ -27,10 +26,12 @@ const projectSchema = new Schema({
     type: String,
     required: true,
   },
-  userId: {
-    type: String,
-    required: true,
+
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
   },
+
   tasks: [
     {
       type: Schema.Types.ObjectId,

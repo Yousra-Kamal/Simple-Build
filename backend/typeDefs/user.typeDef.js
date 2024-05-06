@@ -5,7 +5,7 @@ const userTypeDef = `#graphql
     email: String!
     password: String! 
     #User can have many projects
-    projects: [Project!]
+    projects:  [Project!]
     #User can have many tasks
     tasks: [Task!]
     
@@ -18,7 +18,7 @@ type Auth {
 
 type Query {
     users: [User]
-    user(userId:ID!): User  
+    user: User  
   }
 
   type Mutation {

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/index.js",
     "dev": "nodemon backend/index.js",
-    "develop": "concurrently \"npm run start\" \"cd frontend && npm start\""
+    "develop": "concurrently \"npm run dev\" \"cd frontend && npm start\""
   },
   "keywords": [],
   "author": "",
