@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 /* eslint-disable react/prop-types */
 export default function ProjectPageHeader({ project }) {
+  console.log(project);
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -7,6 +10,12 @@ export default function ProjectPageHeader({ project }) {
           <div>
             <h3 className="pt-4 text-base font-semibold leading-6 text-gray-900">
               {project.name}
+              <Link
+                to={`/updateprojectForm/${project._id}`}
+                className="pl-4 mb-2"
+              >
+                🖊
+              </Link>
             </h3>
 
             <p className="mt-2 max-w-4xl text-sm text-gray-500">

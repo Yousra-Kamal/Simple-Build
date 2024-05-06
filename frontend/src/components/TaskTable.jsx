@@ -1,3 +1,5 @@
+ 
+
 const tasks = {
   items: [
     {
@@ -20,7 +22,6 @@ const tasks = {
     },
     {
       id: 4,
-
       description: "Landscaping",
       status: "Completed",
       stage: "Fixing",
@@ -28,12 +29,11 @@ const tasks = {
   ],
 };
 
-export default function TaskTable() {
+function TaskTable() {
   return (
     <table className="mt-16 w-full whitespace-nowrap text-left text-sm leading-6">
       <colgroup>
         <col className="w-full" />
-        <col />
         <col />
         <col />
       </colgroup>
@@ -46,13 +46,13 @@ export default function TaskTable() {
             scope="col"
             className="hidden py-3 pl-8 pr-0 text-right font-semibold sm:table-cell"
           >
-            Status
+            Stage
           </th>
           <th
             scope="col"
             className="hidden py-3 pl-8 pr-0 text-right font-semibold sm:table-cell"
           >
-            Stage
+            Status
           </th>
         </tr>
       </thead>
@@ -63,10 +63,10 @@ export default function TaskTable() {
               <div className="truncate text-gray-500">{item.description}</div>
             </td>
             <td className="hidden py-5 pl-8 pr-0 text-right align-top tabular-nums text-gray-700 sm:table-cell">
-              {item.status}
+              {item.stage}
             </td>
             <td className="hidden py-5 pl-8 pr-0 text-right align-top tabular-nums text-gray-700 sm:table-cell">
-              {item.stage}
+              {item.status}
             </td>
           </tr>
         ))}
@@ -74,3 +74,5 @@ export default function TaskTable() {
     </table>
   );
 }
+
+export default TaskTable;

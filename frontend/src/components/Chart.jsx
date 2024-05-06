@@ -12,13 +12,13 @@ const Chart = () => {
         data: [13, 8, 3],
         backgroundColor: [
           "rgba(75, 192, 192)",
-          "rgba(196, 164, 0)",
-          "rgba(0, 162, 235)",
+          "rgba(255, 99, 132)",
+          "rgba(54, 162, 235)",
         ],
         borderColor: [
           "rgba(75, 192, 192)",
-          "rgba(196, 164, 0)",
-          "rgba(54, 162, 235)",
+          "rgba(255, 99, 132)",
+          "rgba(54, 162, 235, 1)",
         ],
         borderWidth: 1,
         borderRadius: 5,
