@@ -5,7 +5,6 @@ const projectSchema = new Schema({
   projectCode: {
     type: String,
     required: true,
-    unique: true,
   },
   name: {
     type: String,

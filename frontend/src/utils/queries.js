@@ -26,18 +26,14 @@ export const QUERY_SINGLE_USER = gql`
 // Important for useQuery: Each query we'd like to be able to perform gets exported out of our queries.js utility
 export const QUERY_PROJECTS = gql`
   query allProjects {
-    user {
-      email
-      username
-      projects {
-        _id
-        description
-        endDate
-        name
-        projectCode
-        startDate
-        status
-      }
+    projects {
+      _id
+      name
+      projectCode
+      status
+      startDate
+      endDate
+      description
     }
   }
 `;
