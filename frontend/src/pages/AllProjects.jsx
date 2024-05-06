@@ -11,12 +11,18 @@ export default function AllProjects() {
   // Execute the query on component load
   const { loading, data } = useQuery(QUERY_PROJECTS);
 
-  const projects = data?.projects || [];
+  const projects = data;
+  console.log(loading);
+  console.log(projects);
+  if (loading) {
+    return <SpinnerLoader />;
+  }
+  return <ProjectsList list={projects} />;
 
-  return (
-    <>
-      <MainNav />
-      {loading ? <SpinnerLoader /> : <ProjectsList projects={projects} />}
-    </>
-  );
+  // return (
+  //   <>
+  //     <MainNav />
+  //     {loading ? <SpinnerLoader /> : <ProjectsList projects={projects} />}
+  //   </>
+  // );
 }

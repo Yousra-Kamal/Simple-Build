@@ -1,13 +1,11 @@
-const { User } = require("../models");
+const { User, Project } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth.js");
 const { usersData, projectsData, tasksData } = require("../dummyData/data.js");
 
 const userResolver = {
   Query: {
-    user: async (_, { userId }) => {
-      return User.findById(userId)
-        .populate("projects")
-        .populate({ path: "projects", populate: "tasks" });
+    user: async (_, args, context) => {
+      return User.findById(context.user._id);
     },
   },
   Mutation: {
@@ -38,6 +36,11 @@ const userResolver = {
     },
     logout: async () => {
       return { message: "You have successfully logged out" };
+    },
+  },
+  User: {
+    projects: async (parent) => {
+      return Project.find({ user: parent._id });
     },
   },
 };

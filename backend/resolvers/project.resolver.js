@@ -4,10 +4,8 @@ const { signToken, AuthenticationError } = require("../utils/auth.js");
 
 const projectResolver = {
   Query: {
-    projects: async (parents, args, context) => {
-      return Project.find({
-        userId: context.user._id,
-      }).populate("tasks");
+    projects: async () => {
+      return Project.find();
     },
     project: async (_, { projectId }) => {
       return Project.findById(projectId).populate("tasks");
@@ -19,15 +17,20 @@ const projectResolver = {
       { name, description, status, projectCode, startDate, endDate },
       context
     ) => {
-      return Project.create({
+      const project = await Project.create({
         name,
         description,
         status,
         projectCode,
         startDate,
         endDate,
-        userId: context.user._id.toString(),
+        user: context.user,
       });
+
+      await User.findByIdAndUpdate(context.user._id, {
+        $push: { projects: project },
+      });
+      return project;
     },
 
     updateProject: async (

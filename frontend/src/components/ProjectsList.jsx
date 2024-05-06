@@ -5,7 +5,7 @@ import { QUERY_PROJECTS } from "../utils/queries";
 
 import { Link } from "react-router-dom";
 
-export default function ProjectsList({ projects }) {
+export default function ProjectsList({ list }) {
   // Define the deleteProject mutation
   // eslint-disable-next-line no-unused-vars
   const [deleteProject, { error }] = useMutation(DELETE_PROJECT, {
@@ -21,6 +21,9 @@ export default function ProjectsList({ projects }) {
       console.error(e);
     }
   };
+
+  const projects = list.user.projects || [];
+  console.log("list", projects);
 
   // If there are no projects, display a message prompting the user to create a project
   if (!projects.length) {
