@@ -34,7 +34,7 @@ import { QUERY_USER } from "../utils/queries";
 const navigation = [
   { name: "Overview", href: "#", icon: ComputerDesktopIcon, current: true },
   { name: "Projects", href: "/projects", icon: HomeIcon, current: false },
-  { name: "Tasks", href: "#", icon: RectangleGroupIcon, current: false },
+  { name: "Services", href: "/Services", icon: RectangleGroupIcon, current: false },
   { name: "Estimate", href: "#", icon: CalculatorIcon, current: false },
   {
     name: "Proposal",

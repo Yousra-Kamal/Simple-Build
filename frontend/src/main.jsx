@@ -5,7 +5,7 @@ import {
   Route,
   createRoutesFromElements,
 } from "react-router-dom";
-import GridBackground from "./components/ui/GridBackgroun.jsx";
+
 import App from "./App.jsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -18,6 +18,7 @@ import AllProjects from "./pages/AllProjects.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import ServicePage from "./pages/ServicePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,6 +35,8 @@ const router = createBrowserRouter(
           element={<UpdateProjectPage />}
         />
         <Route path="projectForm" element={<CreateProjectPage />} />
+        <Route path="services" element={<ServicePage />} />
+
       </Route>
     </Route>
   )
