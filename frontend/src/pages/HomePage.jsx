@@ -2,12 +2,180 @@
 import logo from "/images/logo.png";
 import house from "/images/house.png";
 
-import { Link } from "react-router-dom";
+import { Doughnut, Bar, Line } from "react-chartjs-2";
+import { Chart as ChartJS ,defaults} from "chart.js/auto";
+
+defaults.maintainAspectRatio = false;
+defaults.responsive = true;
 
 export default function HomePage() {
   return (
-    <div className="bg-white">
-      <div className="relative">
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <Bar
+          data={{
+            labels: ["January", "February", "March", "April", "May", "June"],
+            datasets: [
+              {
+                label: "Revenue",
+                data: [12, 19, 3, 5, 2, 3],
+
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+              },
+
+              {
+                label: "Expenses",
+                data: [2, 3, 20, 5, 1, 4],
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "Profit",
+                data: [10, 16, 5, 8, 1, 2],
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+
+              },
+              {
+                label: "Revenue",
+                data: [12, 19, 3, 5, 2, 3],
+
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+              },
+
+              {
+                label: "Expenses",
+                data: [2, 3, 20, 5, 1, 4],
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "Profit",
+                data: [10, 16, 5, 8, 1, 2],
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+
+              },
+              {
+                label: "Revenue",
+                data: [12, 19, 3, 5, 2, 3],
+
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+              },
+
+              {
+                label: "Expenses",
+                data: [2, 3, 20, 5, 1, 4],
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "Profit",
+                data: [10, 16, 5, 8, 1, 2],
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+
+              },
+              {
+                label: "Revenue",
+                data: [12, 19, 3, 5, 2, 3],
+
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132 ,1)",
+                borderWidth: 1,
+                  
+              }, 
+
+            ],
+          }}
+        />
+      </div>{" "}
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <Line
+          data={{
+            labels: ["January", "February", "March", "April", "May", "June"],
+            datasets: [
+              {
+                label: "Revenue",
+                data: [12, 19, 3, 5, 2, 3],
+                fill: false,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "Expenses",
+                data: [2, 3, 20, 5, 1, 4],
+                fill: false,
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "Profit",
+                data: [10, 16, 5, 8, 1, 2],
+                fill: false,
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+              },
+              
+            ],
+          }}
+
+          options={{
+            plugins: {
+               title: {
+                display: true,
+                text: 'Custom Chart Title',
+                font: {
+                  size: 20,
+                },
+              },
+            },
+
+          }}
+        />
+      </div>{" "}
+
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <Line
+          data={{
+            labels: ["January", "February", "March", "April", "May", "June"],
+            datasets: [
+              {
+                label: "Revenue",
+                data: [12, 19, 3, 5, 2, 3],
+                fill: false,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgba(255, 99, 132, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "Expenses",
+                data: [2, 3, 20, 5, 1, 4],
+                fill: false,
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                borderWidth: 1,
+              },
+            ],
+          }}
+        />
+      </div>{" "}
+      {/*  <div className="relative">
         <div className="mx-auto max-w-7xl">
           <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
             <svg
@@ -68,7 +236,7 @@ export default function HomePage() {
             alt="house image "
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
