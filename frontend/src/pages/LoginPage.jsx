@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "/images/logo.png";
 
 import { useState } from "react";
@@ -8,6 +8,7 @@ import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 export default function LoginPage(props) {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
   const [errorMessage, setErrorMessage] = useState("");
@@ -33,15 +34,11 @@ export default function LoginPage(props) {
       });
 
       Auth.login(data.login.token);
+      navigate("/projects");
     } catch (e) {
       setErrorMessage("Invalid email or password"); // Set error message on login failure
       console.error(e);
     }
-    // clear form values
-    setFormState({
-      email: "",
-      password: "",
-    });
   };
 
   return (
