@@ -19,6 +19,8 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ServicePage from "./pages/ServicePage.jsx";
+import { CheckoutForm, Return } from "./pages/StripePage.jsx";
+import StripePage from "./pages/StripePage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,9 @@ const router = createBrowserRouter(
       <Route path="/" element={<HomePage />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="signup" element={<SignupPage />} />
+      <Route path="/stripe" element={<StripePage />} />
+      <Route path="/checkout" element={<CheckoutForm />} />
+      <Route path="/return" element={<Return />} />
 
       <Route element={<ProtectedRoute />}>
         <Route path="projects" element={<AllProjects />} />
@@ -36,7 +41,6 @@ const router = createBrowserRouter(
         />
         <Route path="projectForm" element={<CreateProjectPage />} />
         <Route path="services" element={<ServicePage />} />
-
       </Route>
     </Route>
   )

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import LayoutGrid from "../components/ui/layout-grid.jsx";
 
 function ServiceCards() {
@@ -16,7 +17,7 @@ function ServiceCards() {
           // Add your purchase logic here
         }}
       >
-        Purchase
+        <Link to="/checkout">Purchase</Link>
       </button>
     </div>
   );
@@ -36,7 +37,7 @@ function ServiceCards() {
           // Add your purchase logic here
         }}
       >
-        Purchase
+        <Link to="/checkout">Purchase</Link>
       </button>
     </div>
   );
@@ -56,7 +57,7 @@ function ServiceCards() {
           // Add your purchase logic here
         }}
       >
-        Purchase
+        <Link to="/checkout">Purchase</Link>
       </button>
     </div>
   );
@@ -76,7 +77,7 @@ function ServiceCards() {
           // Add your purchase logic here
         }}
       >
-        Purchase
+        <Link to="/checkout">Purchase</Link>
       </button>
     </div>
   );
@@ -86,7 +87,7 @@ function ServiceCards() {
       id: 1,
       content: <SkeletonOne />,
       className: "md:col-span-2",
-      thumbnail: "/images/site2.jpg", /* /images/site2.jpg */
+      thumbnail: "/images/site2.jpg" /* /images/site2.jpg */,
     },
     {
       id: 2,

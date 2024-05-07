@@ -7,6 +7,9 @@ const mergedResolvers = require("./resolvers/index.js");
 const mergedTypeDefs = require("./typeDefs/index.js");
 const db = require("./db/connectDB.js");
 
+// This is your test secret API key.
+const stripe = require('stripe')('sk_test_51PDMlIGnmdmVN24CpvOxlt7R7yhhPnIZaAhST6dCEeyrB1gIGm2tsPpdtvLWvEiCJH0siVt8ourSmA06ioPgOC9R00By5VkBXT');
+
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -17,6 +20,35 @@ const server = new ApolloServer({
   resolvers: mergedResolvers,
 });
 
+
+const YOUR_DOMAIN = 'http://localhost:3001';
+
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    ui_mode: 'embedded',
+    line_items: [
+      {
+        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+        price: '{{PRICE_ID}}',
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
+  });
+
+  res.send({clientSecret: session.client_secret});
+});
+
+app.get('/session-status', async (req, res) => {
+  const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+
+  res.send({
+    status: session.status,
+    customer_email: session.customer_details.email
+  });
+});
+
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();
@@ -24,9 +56,7 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
-  // Important for MERN Setup: When our application runs from production, it functions slightly differently than in development
-  // In development, we run two servers concurrently that work together
-  // In production, our Node server runs and delivers our client-side bundle from the dist/ folder
+ 
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/dist")));
 
