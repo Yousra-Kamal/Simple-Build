@@ -4,10 +4,12 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import logo from "/images/logo.png";
 
 export default function SignupPage() {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -15,6 +17,7 @@ export default function SignupPage() {
   });
 
   const [addUser, { error, data }] = useMutation(ADD_USER);
+  console.log("ADD USEr",data);
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -42,6 +45,8 @@ export default function SignupPage() {
       }
 
       Auth.login(data.addUser.token);
+      navigate("/projects");
+
     } catch (error) {
       if (error.message.includes("E11000 duplicate key error")) {
         setErrorMessage("This email address is already registered.");
@@ -49,12 +54,7 @@ export default function SignupPage() {
         setErrorMessage("Failed to sign up. Please try again later.");
       }
     }
-
-    setFormState({
-      username: "",
-      email: "",
-      password: "",
-    });
+  
   };
 
   return (
