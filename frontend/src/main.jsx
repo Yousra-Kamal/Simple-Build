@@ -21,7 +21,6 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ServicePage from "./pages/ServicePage.jsx";
 import { CheckoutForm, Return } from "./pages/StripePage.jsx";
 import StripePage from "./pages/StripePage.jsx";
-import Test from "./pages/Test.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,8 +31,6 @@ const router = createBrowserRouter(
       <Route path="/stripe" element={<StripePage />} />
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/return" element={<Return />} />
-      <Route path="/test" element={<Test />} />
-
 
       <Route element={<ProtectedRoute />}>
         <Route path="projects" element={<AllProjects />} />
