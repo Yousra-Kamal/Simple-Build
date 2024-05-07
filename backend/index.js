@@ -11,12 +11,8 @@ const db = require("./db/connectDB.js");
 var cors = require("cors");
 
 // This is your test secret API key.
-
-
-
-
-
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -34,17 +30,14 @@ app.get("/session-status", async (req, res) => {
   res.send({
     status: session.status,
     customer_email: session.customer_details.email,
-    customer_email: session.customer_details.email,
   });
 });
 
 // Create a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();
-
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
-
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/dist")));
 
@@ -77,7 +70,6 @@ const startApolloServer = async () => {
       context: authMiddleware,
     })
   );
-
   db.once("open", () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
@@ -85,6 +77,5 @@ const startApolloServer = async () => {
     });
   });
 };
-
 // Call the async function to start the server
 startApolloServer();
