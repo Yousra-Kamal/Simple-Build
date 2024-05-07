@@ -65,7 +65,7 @@ export default function HomePage() {
           <img
             className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
             src={house}
-            alt="house image "
+            alt="house image"
           />
         </div>
       </div>

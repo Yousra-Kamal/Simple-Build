@@ -11,7 +11,7 @@ const projectTypeDef = `#graphql
         userId: String!
         user: User!
         #Project can have many tasks
-        tasks: [Task]
+        
     }
    
    type Query {

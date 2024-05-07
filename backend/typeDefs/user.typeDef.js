@@ -7,7 +7,7 @@ const userTypeDef = `#graphql
     #User can have many projects
     projects:  [Project!]
     #User can have many tasks
-    tasks: [Task!]
+  
     
 }
 

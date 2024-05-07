@@ -1,4 +1,4 @@
-const { Project, Task, User } = require("../models");
+const { Project, User } = require("../models");
 
 const { signToken, AuthenticationError } = require("../utils/auth.js");
 
