@@ -1,4 +1,6 @@
 const express = require("express");
+const dotenv = require("dotenv");
+dotenv.config();
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const path = require("path");
@@ -9,16 +11,12 @@ const db = require("./db/connectDB.js");
 var cors = require("cors");
 
 // This is your test secret API key.
-const stripe = require("stripe")(
-  process.env.STRIPE_SECRET_KEY
-);
-const stripe = require("stripe")(
-  "sk_test_51PDMlIGnmdmVN24CpvOxlt7R7yhhPnIZaAhST6dCEeyrB1gIGm2tsPpdtvLWvEiCJH0siVt8ourSmA06ioPgOC9R00By5VkBXT"
-);
 
-const dotenv = require("dotenv");
-dotenv.config();
 
+
+
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -46,7 +44,6 @@ const startApolloServer = async () => {
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
-
 
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/dist")));

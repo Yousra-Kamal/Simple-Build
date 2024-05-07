@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-const stripeKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+
 import { useCallback, useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -17,7 +17,7 @@ import {
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 // This is your test public API key.
-const stripePromise = loadStripe("pk_test_51PDMlIGnmdmVN24CYRBZ8mn28LQ2xrF8CTqCQT7gGQZS6Pr08VRHDRtcpfcnbMcdm85qvgurfCAvgt6kEUlFYzOW002SrtmgHP");
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 export const CheckoutForm = () => {
   const fetchClientSecret = useCallback(() => {

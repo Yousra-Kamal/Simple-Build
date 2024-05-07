@@ -12,8 +12,7 @@ export default function AllProjects() {
   const { loading, data } = useQuery(QUERY_PROJECTS);
 
   const projects = data;
-  console.log(loading);
-  console.log(projects);
+  
   if (loading) {
     return <SpinnerLoader />;
   }
