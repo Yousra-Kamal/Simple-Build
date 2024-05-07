@@ -5,6 +5,7 @@ import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -22,9 +23,8 @@ const stripePromise = loadStripe(
 export const CheckoutForm = () => {
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
-    return fetch("/create-checkout-session", {
+    return fetch("http://localhost:3001/create-checkout-session", {
       method: "POST",
-      
     })
       .then((res) => res.json())
       .then((data) => data.clientSecret);
@@ -43,14 +43,15 @@ export const CheckoutForm = () => {
 
 export const Return = () => {
   const [status, setStatus] = useState(null);
-  const [customerEmail, setCustomerEmail] = useState('');
+  const [customerEmail, setCustomerEmail] = useState("");
 
   useEffect(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const sessionId = urlParams.get('session_id');
+    const sessionId = urlParams.get("session_id");
+    console.log(sessionId);
 
-    fetch(`/session-status?session_id=${sessionId}`)
+    fetch(`http://localhost:3001/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
@@ -58,26 +59,24 @@ export const Return = () => {
       });
   }, []);
 
-  if (status === 'open') {
-    return (
-      <Navigate to="/checkout" />
-    )
+  if (status === "open") {
+    return <Navigate to="/checkout" />;
   }
 
-  if (status === 'complete') {
+  if (status === "complete") {
     return (
       <section id="success">
         <p>
-          We appreciate your business! A confirmation email will be sent to {customerEmail}.
-
-          If you have any questions, please email <a href="mailto:orders@example.com">orders@example.com</a>.
+          We appreciate your business! A confirmation email will be sent to{" "}
+          {customerEmail}. If you have any questions, please email{" "}
+          <a href="mailto:orders@example.com">orders@example.com</a>.
         </p>
       </section>
-    )
+    );
   }
 
   return null;
-}
+};
 
 const StripePage = () => {
   return (
