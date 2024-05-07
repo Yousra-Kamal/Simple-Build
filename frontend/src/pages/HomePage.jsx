@@ -6,12 +6,8 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
-    <div className=" items-center text-center mt-40">
-      <Link to="/checkout" className=" text-red-900 font-bold text-4xl">
-        checkout
-      </Link>
-    </div>
-    /*  <div className="bg-white">
+    
+  <div className="bg-white">
       <div className="relative">
         <div className="mx-auto max-w-7xl">
           <div className="relative z-10 pt-14 lg:w-full lg:max-w-2xl">
@@ -74,6 +70,6 @@ export default function HomePage() {
           />
         </div>
       </div>
-    </div> */
+    </div> 
   );
 }
