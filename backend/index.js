@@ -6,10 +6,14 @@ const { authMiddleware } = require("./utils/auth");
 const mergedResolvers = require("./resolvers/index.js");
 const mergedTypeDefs = require("./typeDefs/index.js");
 const db = require("./db/connectDB.js");
+var cors = require("cors");
 
 // This is your test secret API key.
 const stripe = require("stripe")(
   process.env.STRIPE_SECRET_KEY
+);
+const stripe = require("stripe")(
+  "sk_test_51PDMlIGnmdmVN24CpvOxlt7R7yhhPnIZaAhST6dCEeyrB1gIGm2tsPpdtvLWvEiCJH0siVt8ourSmA06ioPgOC9R00By5VkBXT"
 );
 
 const dotenv = require("dotenv");
@@ -22,30 +26,16 @@ const server = new ApolloServer({
   resolvers: mergedResolvers,
 });
 
-const YOUR_DOMAIN = "http://localhost:3001";
-
-app.post("/create-checkout-session", async (req, res) => {
-  const session = await stripe.checkout.sessions.create({
-    ui_mode: "embedded",
-    line_items: [
-      {
-        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-        price: "{{PRICE_ID}}",
-        quantity: 1,
-      },
-    ],
-    mode: "payment",
-    return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
-  });
-
-  res.send({ clientSecret: session.client_secret });
-});
+app.use(cors());
+const YOUR_DOMAIN = "http://localhost:3000";
 
 app.get("/session-status", async (req, res) => {
+  console.log(req.query?.session_id);
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
 
   res.send({
     status: session.status,
+    customer_email: session.customer_details.email,
     customer_email: session.customer_details.email,
   });
 });
@@ -57,6 +47,7 @@ const startApolloServer = async () => {
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
 
+
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/dist")));
 
@@ -64,6 +55,23 @@ const startApolloServer = async () => {
       res.sendFile(path.join(__dirname, "../client/dist/index.html"));
     });
   }
+  app.post("/create-checkout-session", async (req, res) => {
+    const session = await stripe.checkout.sessions.create({
+      ui_mode: "embedded",
+      line_items: [
+        {
+          // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
+          price: "price_1PDkADGnmdmVN24CScp5CHQV",
+
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      return_url: `${YOUR_DOMAIN}/return?session_id={CHECKOUT_SESSION_ID}`,
+    });
+
+    res.send({ clientSecret: session.client_secret });
+  });
 
   // Important for MERN Setup: Any client-side requests that begin with '/graphql' will be handled by our Apollo Server
   app.use(

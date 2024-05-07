@@ -6,6 +6,7 @@ import {
   EmbeddedCheckoutProvider,
   EmbeddedCheckout,
 } from "@stripe/react-stripe-js";
+
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +22,7 @@ const stripePromise = loadStripe("pk_test_51PDMlIGnmdmVN24CYRBZ8mn28LQ2xrF8CTqCQ
 export const CheckoutForm = () => {
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
-    return fetch("/create-checkout-session", {
+    return fetch("http://localhost:3001/create-checkout-session", {
       method: "POST",
     })
       .then((res) => res.json())
@@ -47,8 +48,9 @@ export const Return = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
+    console.log(sessionId);
 
-    fetch(`/session-status?session_id=${sessionId}`)
+    fetch(`http://localhost:3001/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
