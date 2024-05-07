@@ -1,117 +1,74 @@
 import { Link } from "react-router-dom";
-import LayoutGrid from "../components/ui/layout-grid.jsx";
 
+const constructionServices = [
+  {
+    name: "Interior Design",
+    description: "Create stunning interiors tailored to your style.",
+    price: "$1,500",
+  },
+  {
+    name: "Remodeling",
+    description: "Renovate and improve your existing property.",
+    price: "$1,500",
+  },
+  {
+    name: "Site Investigation",
+    description: "Thorough investigation of potential construction sites.",
+    price: "$1,500",
+  },
+  {
+    name: "Site Meeting",
+    description:
+      "On-site meetings to discuss project details and requirements.",
+    price: "$1,500",
+  },
+];
 function ServiceCards() {
-  const SkeletonOne = () => (
-    <div>
-      <p className="font-bold text-4xl text-white">Site Investigation</p>
-      <p className="font-normal text-base text-white">
-        {" "}
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
-      </p>
-      <button
-        className="font-normal text-base my-4 max-w-lg text-neutral-200 bg-transparent border border-neutral-200 rounded-full px-4 py-2 hover:bg-neutral-200 hover:text-black transition-colors duration-300"
-        onClick={() => {
-          console.log("Purchase button clicked");
-          // Add your purchase logic here
-        }}
-      >
-        <Link to="/checkout">Purchase</Link>
-      </button>
-    </div>
-  );
-
-  const SkeletonTwo = () => (
-    <div>
-      <p className="font-bold text-4xl text-white">Interior Design </p>
-      <p className="font-normal text-base text-white">
-        {" "}
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
-      </p>
-      <button
-        className="font-normal text-base my-4 max-w-lg text-neutral-200 bg-transparent border border-neutral-200 rounded-full px-4 py-2 hover:bg-neutral-200 hover:text-black transition-colors duration-300"
-        onClick={() => {
-          console.log("Purchase button clicked");
-          // Add your purchase logic here
-        }}
-      >
-        <Link to="/checkout">Purchase</Link>
-      </button>
-    </div>
-  );
-
-  const SkeletonThree = () => (
-    <div>
-      <p className="font-bold text-4xl text-white">Site Meeting </p>
-      <p className="font-normal text-base text-white">
-        {" "}
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
-      </p>
-      <button
-        className="font-normal text-base my-4 max-w-lg text-neutral-200 bg-transparent border border-neutral-200 rounded-full px-4 py-2 hover:bg-neutral-200 hover:text-black transition-colors duration-300"
-        onClick={() => {
-          console.log("Purchase button clicked");
-          // Add your purchase logic here
-        }}
-      >
-        <Link to="/checkout">Purchase</Link>
-      </button>
-    </div>
-  );
-
-  const SkeletonFour = () => (
-    <div>
-      <p className="font-bold text-4xl text-white">House Design</p>
-      <p className="font-normal text-base text-white">
-        {" "}
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
-      </p>
-      <button
-        className="font-normal text-base my-4 max-w-lg text-neutral-200 bg-transparent border border-neutral-200 rounded-full px-4 py-2 hover:bg-neutral-200 hover:text-black transition-colors duration-300"
-        onClick={() => {
-          console.log("Purchase button clicked");
-          // Add your purchase logic here
-        }}
-      >
-        <Link to="/checkout">Purchase</Link>
-      </button>
-    </div>
-  );
-
-  const cards = [
-    {
-      id: 1,
-      content: <SkeletonOne />,
-      className: "md:col-span-2",
-      thumbnail: "/images/site2.jpg" /* /images/site2.jpg */,
-    },
-    {
-      id: 2,
-      content: <SkeletonTwo />,
-      className: "col-span-1",
-      thumbnail: "/images/decor.jpg",
-    },
-    {
-      id: 3,
-      content: <SkeletonThree />,
-      className: "col-span-1",
-      thumbnail: "/images/meeting.jpg",
-    },
-    {
-      id: 4,
-      content: <SkeletonFour />,
-      className: "md:col-span-2",
-      thumbnail: "/images/design.webp",
-    },
-  ];
-
   return (
-    <div className="h-screen py-20 w-full">
-      <LayoutGrid cards={cards} />
+    <div className="bg-white">
+      <div aria-hidden="true" className="relative">
+        <img
+          src="/images/meeting.jpg"
+          alt=""
+          className="h-96 w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-white" />
+      </div>
+
+      <div className="relative mx-auto -mt-12 max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center lg:max-w-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Construction Services
+          </h2>
+          <p className="mt-4 text-gray-500">
+            Explore our range of construction services.
+          </p>
+        </div>
+
+        <ul className="mx-auto mt-16 grid max-w-2xl gap-y-6 sm:max-w-4xl sm:grid-cols-2 lg:max-w-5xl lg:grid-cols-2">
+          {constructionServices.map((service) => (
+            <li
+              key={service.name}
+              className="border border-gray-200 p-4 flex justify-between"
+            >
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">
+                  {service.name}
+                </h3>
+                <p className="text-sm text-gray-500">{service.description}</p>
+              </div>
+              <div className="flex items-center">
+                <p className="text-lg font-semibold text-gray-900 mr-2">
+                  {service.price}
+                </p>
+                <button className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                  <Link to="/checkout">Purchase</Link>
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
