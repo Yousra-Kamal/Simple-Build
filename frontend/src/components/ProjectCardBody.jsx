@@ -16,35 +16,27 @@ const invoice = {
   items: [
     {
       id: 1,
-      title: "Logo redesign",
-      description: "New logo and digital asset playbook.",
+      title: "Site Preparation",
+      description: "Ensure site safety measures are in place.",
       hours: "20.0",
-      rate: "$100.00",
-      price: "$2,000.00",
+      rate: "setup",
+      price: "in progress",
     },
     {
       id: 2,
-      title: "Website redesign",
-      description: "Design and program new company website.",
+      title: "Foundation and Structural Work",
+      description: "Excavate and lay foundations for the residences.",
       hours: "52.0",
-      rate: "$100.00",
-      price: "$5,200.00",
+      rate: "setup",
+      price: "in progress",
     },
     {
       id: 3,
-      title: "Business cards",
-      description: 'Design and production of 3.5" x 2.0" business cards.',
+      title: "Building Construction",
+      description: "Monitor progress and quality of workmanship.",
       hours: "12.0",
-      rate: "$100.00",
-      price: "$1,200.00",
-    },
-    {
-      id: 4,
-      title: "T-shirt design",
-      description: "Three t-shirt design concepts.",
-      hours: "4.0",
-      rate: "$100.00",
-      price: "$400.00",
+      rate: "setup",
+      price: "in progress",
     },
   ],
 };
@@ -95,7 +87,7 @@ export default function ProjectCardBodye({ project }) {
   return (
     <>
       <main>
-        <header className="relative isolate pt-16">
+        <header className="relative isolate py-4">
           <div
             className="absolute inset-0 -z-10 overflow-hidden"
             aria-hidden="true"
@@ -237,13 +229,13 @@ export default function ProjectCardBodye({ project }) {
                       scope="col"
                       className="hidden py-3 pl-8 pr-0 text-right font-semibold sm:table-cell"
                     >
-                      Rate
+                      Stage
                     </th>
                     <th
                       scope="col"
                       className="py-3 pl-8 pr-0 text-right font-semibold"
                     >
-                      Price
+                      Status
                     </th>
                   </tr>
                 </thead>
