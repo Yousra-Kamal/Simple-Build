@@ -2,7 +2,7 @@ import Chart from "./Chart";
 
 export default function ChartCard() {
   return (
-    <div className="lg:col-start-3 lg:row-end-1">
+    <>
       <h2 className="sr-only">Summary</h2>
       <div className="rounded-lg bg-gray-50 shadow-sm ring-1 ring-gray-900/5">
         <dl className="flex flex-wrap">
@@ -20,6 +20,6 @@ export default function ChartCard() {
           Coming Soon
         </div>
       </div>
-    </div>
+    </>
   );
 }
