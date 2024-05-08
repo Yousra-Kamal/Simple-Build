@@ -6,6 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import { Navigate, Link } from "react-router-dom";
+const baseUrl = import.meta.env.RENDER_EXTERNAL_URL || "http://localhost:3001";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -14,7 +15,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 export const CheckoutForm = () => {
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
-    return fetch("http://localhost:3001/create-checkout-session", {
+    return fetch(`${baseUrl}/create-checkout-session`, {
       method: "POST",
     })
       .then((res) => res.json())
@@ -39,7 +40,7 @@ export const Return = () => {
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
     console.log(sessionId);
-    fetch(`http://localhost:3001/session-status?session_id=${sessionId}`)
+    fetch(`${baseUrl}/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
