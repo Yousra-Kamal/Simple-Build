@@ -39,7 +39,7 @@ export const Return = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
-    console.log(sessionId);
+   
     fetch(`${baseUrl}/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {

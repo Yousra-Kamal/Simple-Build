@@ -17,7 +17,7 @@ export default function SignupPage() {
   });
 
   const [addUser, { error, data }] = useMutation(ADD_USER);
-  console.log("ADD USEr", data);
+  
 
   const [errorMessage, setErrorMessage] = useState("");
 

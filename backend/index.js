@@ -24,7 +24,7 @@ app.use(cors());
 const YOUR_DOMAIN = process.env.RENDER_EXTERNAL_HOSTNAME || "http://localhost:3000";
 
 app.get("/session-status", async (req, res) => {
-  console.log(req.query?.session_id);
+ 
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
 
   res.send({

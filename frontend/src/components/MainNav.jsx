@@ -4,7 +4,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "/images/logo.png";
 import user from "/images/user.jpg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
@@ -16,7 +16,6 @@ function classNames(...classes) {
 }
 
 export default function MainNav() {
-
   const { loading, data } = useQuery(QUERY_USER);
   const userdata = data?.user || {};
 
@@ -24,6 +23,16 @@ export default function MainNav() {
     event.preventDefault();
     Auth.logout();
   };
+
+  const activeLink =
+    "inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900";
+  const inactiveLink =
+    "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700";
+
+  const activeLinkMobile =
+    "block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700";
+  const inactiveLinkMobile =
+    "block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700";
 
   return (
     <Disclosure as="nav" className="bg-white shadow">
@@ -33,34 +42,42 @@ export default function MainNav() {
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto pr-2"
-                    src={logo}
-                    alt="SimpleBuild logo"
-                  />
-                  <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
-                    SimpleBuild
-                  </h1>
+                  <Link to="/projects">
+                    <img
+                      className="h-8 w-auto pr-2"
+                      src={logo}
+                      alt="SimpleBuild logo"
+                    />
+                    <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
+                      SimpleBuild
+                    </h1>
+                  </Link>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  <Link
+                  <NavLink
                     to="/projects"
-                    className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
+                    className={({ isActive }) =>
+                      isActive ? activeLink : inactiveLink
+                    }
                   >
                     Projects
-                  </Link>
-                  <Link
+                  </NavLink>
+                  {/* <NavLink
                     to="#"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    className={({ isActive }) =>
+                      isActive ? activeLink : inactiveLink
+                    }
                   >
                     Tasks
-                  </Link>
-                  <Link
+                  </NavLink> */}
+                  <NavLink
                     to="/services"
-                    className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                    className={({ isActive }) =>
+                      isActive ? activeLink : inactiveLink
+                    }
                   >
                     Services
-                  </Link>
+                  </NavLink>
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -124,25 +141,29 @@ export default function MainNav() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 pb-3 pt-2">
-              <Link
+              <NavLink
                 to={"/projects"}
-                className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
+                className={({ isActive }) =>
+                  isActive ? activeLinkMobile : inactiveLinkMobile
+                }
               >
                 Projects
-              </Link>
-              <Link
+              </NavLink>
+              {/*  <Link
                 to={"/"}
                 className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
               >
                 Tasks
-              </Link>
+              </Link> */}
 
-              <Link
+              <NavLink
                 to="/services"
-                className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+                className={({ isActive }) =>
+                  isActive ? activeLinkMobile : inactiveLinkMobile
+                }
               >
                 Services
-              </Link>
+              </NavLink>
             </div>
             <div className="border-t border-gray-200 pb-3 pt-4">
               <div className="flex items-center px-4">

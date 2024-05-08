@@ -23,7 +23,7 @@ export default function ProjectsList({ list }) {
   };
 
   const projects = list.projects || [];
-  console.log("list", projects);
+ 
 
   // If there are no projects, display a message prompting the user to create a project
   if (!projects.length) {

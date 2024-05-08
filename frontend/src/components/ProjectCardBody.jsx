@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Fragment } from "react";
 import ChartCard from "./ChartCard";
@@ -65,7 +66,7 @@ export default function ProjectCardBodye({ project }) {
   const [deleteTask] = useMutation(DELETE_TASK);
 
   const handleDeleteTask = async (taskId) => {
-    console.log("taskId:", taskId, "project._id", project._id);
+    
     try {
       const { data } = await deleteTask({
         variables: {
@@ -73,7 +74,7 @@ export default function ProjectCardBodye({ project }) {
           taskId: taskId,
         },
       });
-      console.log("Task deleted:", data);
+       
       
       // Handle UI updates or notifications upon successful deletion
     } catch (error) {
@@ -267,7 +268,7 @@ export default function ProjectCardBodye({ project }) {
                       <td className="hidden py-5 pl-8 pr-0 text-right align-top tabular-nums text-gray-700 sm:table-cell">
                         {task.taskStage}
                       </td>
-                      <td className="py-5 pl-8 pr-0 text-right align-top tabular-nums text-green-600">
+                      <td className="py-5 pl-8 pr-0 text-right align-top tabular-nums text-green-800">
                         {task.taskStatus}
                       </td>
                       <td className="  font-bold text-red-600 py-6 pl-8 pr-0 text-right align-top tabular-nums t">

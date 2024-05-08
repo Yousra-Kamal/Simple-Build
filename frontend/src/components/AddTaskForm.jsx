@@ -35,7 +35,7 @@ export default function AddTaskForm() {
         },
       });
 
-      console.log("Task added:", data);
+      
       setTaskFormData({
         taskTitle: "",
         taskDescription: "",
@@ -138,7 +138,7 @@ export default function AddTaskForm() {
                       <option value="Slab">Slab</option>
                       <option value="Frame">Frame</option>
                       <option value="Lockup">Lockup</option>
-                      <option value="Fit Ou">Fit Out</option>
+                      <option value="Fit Out">Fit Out</option>
                       <option value="Handover">Handover</option>
                     </select>
                   </div>

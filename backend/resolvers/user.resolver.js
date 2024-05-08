@@ -12,7 +12,7 @@ const userResolver = {
     addUser: async (_, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
-      console.log("user added successfully", user);
+      
       return { token, user };
     },
     login: async (_, { email, password }) => {
@@ -31,7 +31,7 @@ const userResolver = {
       }
 
       const token = signToken(user);
-      console.log("user logged in successfully", user);
+     
       return { token, user };
     },
     logout: async () => {

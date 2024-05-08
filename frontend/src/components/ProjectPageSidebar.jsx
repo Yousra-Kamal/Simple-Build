@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import userlogo from "/images/user.jpg";
 import logo from "/images/logo.png";
 import { Fragment, useState } from "react";
@@ -34,7 +34,12 @@ import { QUERY_USER } from "../utils/queries";
 const navigation = [
   { name: "Overview", href: "#", icon: ComputerDesktopIcon, current: true },
   { name: "Projects", href: "/projects", icon: HomeIcon, current: false },
-  { name: "Services", href: "/Services", icon: RectangleGroupIcon, current: false },
+  {
+    name: "Services",
+    href: "/Services",
+    icon: RectangleGroupIcon,
+    current: false,
+  },
   { name: "Estimate", href: "#", icon: CalculatorIcon, current: false },
   {
     name: "Proposal",
@@ -73,8 +78,6 @@ export default function ProjectPageSidebar() {
 
   const { loading, data } = useQuery(QUERY_USER);
   const userdata = data?.user || {};
-
- 
 
   const logout = (event) => {
     event.preventDefault();
@@ -189,12 +192,14 @@ export default function ProjectPageSidebar() {
       {/* Static sidebar for desktop */}
       <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         {/* Sidebar component, swap this element with another sidebar if you like */}
-        <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white  pb-4">
+        <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white pb-4">
           <div className="flex h-16 shrink-0 items-center">
-            <img className="h-8 w-auto pr-2" src={logo} alt="Your Company" />
-            <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
-              SimpleBuild
-            </h1>
+            <img className="h-8 w-auto pr-2" src={logo} alt="simplebuild logo" />
+            <Link to="/projects">
+              <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
+                SimpleBuild
+              </h1>
+            </Link>
           </div>
           <nav className="flex flex-1 flex-col px-6">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -213,7 +218,7 @@ export default function ProjectPageSidebar() {
                       >
                         <item.icon
                           className={classNames(
-                            item.current
+                            item.current === "Overview"
                               ? "text-blue-600"
                               : "text-gray-400 group-hover:text-blue-600",
                             "h-6 w-6 shrink-0"

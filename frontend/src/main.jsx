@@ -1,10 +1,6 @@
 /* eslint-disable no-unused-vars */
 import ReactDOM from "react-dom/client";
-import {
-  BrowserRouter,
-  Route,
-  createRoutesFromElements,
-} from "react-router-dom";
+import { Route, createRoutesFromElements } from "react-router-dom";
 
 import App from "./App.jsx";
 import "./index.css";
@@ -21,10 +17,10 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ServicePage from "./pages/ServicePage.jsx";
 import { CheckoutForm, Return } from "./pages/StripePage.jsx";
 import StripePage from "./pages/StripePage.jsx";
-import Test from "./pages/Test.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    // Public routes
     <Route element={<App />} errorElement={<NotFoundPage />}>
       <Route path="/" element={<HomePage />} />
       <Route path="login" element={<LoginPage />} />
@@ -32,8 +28,8 @@ const router = createBrowserRouter(
       <Route path="/stripe" element={<StripePage />} />
       <Route path="/checkout" element={<CheckoutForm />} />
       <Route path="/return" element={<Return />} />
-      <Route path="test" element={<Test/>} />
 
+      {/* Protected routes */}
       <Route element={<ProtectedRoute />}>
         <Route path="projects" element={<AllProjects />} />
         <Route path="projectPage/:projectId" element={<ProjectPage />} />
