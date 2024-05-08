@@ -11,15 +11,34 @@ const projectTypeDef = `#graphql
         userId: String!
         user: User!
         #Project can have many tasks
+        tasks: [Task!]
         
     }
+
+   type Task {
+        _id: ID!
+        taskTitle: String!
+        taskDescription: String!
+        taskStage: String!
+        taskStatus: String!
+    }   
+
    
    type Query {
         projects: [Project]
         project(projectId: ID!): Project
     }
+
    type Mutation {
         createProject(name:String!, description:String!, status:String!,projectCode:String!, startDate:String!, endDate:String!, 
+        ): Project
+        
+        addTaskToProject(
+            projectId: ID!
+            taskTitle: String!
+            taskDescription: String!
+            taskStage: String!
+            taskStatus: String!
         ): Project
 
         updateProject(
@@ -31,6 +50,18 @@ const projectTypeDef = `#graphql
             startDate: String
             endDate: String
          ): Project
+
+        updateTaskInProject(
+            projectId: ID!
+            taskId: ID!
+            taskTitle: String
+            taskDescription: String
+            taskStage: String
+            taskStatus: String
+        ): Project
+        
+
+        deleteTaskFromProject(projectId: ID!, taskId: ID!): Project
 
         deleteProject(projectId: ID!): Project
     }

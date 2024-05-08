@@ -57,8 +57,67 @@ const projectResolver = {
       );
     },
 
+    updateTaskInProject: async (
+      _,
+      { projectId, taskId, taskTitle, taskDescription, taskStage, taskStatus }
+    ) => {
+      try {
+        const project = await Project.findById(projectId);
+
+        if (!project) {
+          throw new Error("Project not found");
+        }
+
+        const taskToUpdate = project.tasks.find((task) =>
+          task._id.equals(taskId)
+        );
+
+        if (!taskToUpdate) {
+          throw new Error("Task not found in project");
+        }
+
+        // Update task fields if provided
+        if (taskTitle) taskToUpdate.taskTitle = taskTitle;
+        if (taskDescription) taskToUpdate.taskDescription = taskDescription;
+        if (taskStage) taskToUpdate.taskStage = taskStage;
+        if (taskStatus) taskToUpdate.taskStatus = taskStatus;
+
+        // Save updated project
+        await project.save();
+
+        return project;
+      } catch (error) {
+        throw new Error(`Failed to update task in project: ${error.message}`);
+      }
+    },
+
     deleteProject: async (_, { projectId }) => {
       return Project.findByIdAndDelete(projectId);
+    },
+
+    addTaskToProject: async (
+      _,
+      { projectId, taskTitle, taskDescription, taskStage, taskStatus }
+    ) => {
+      return Project.findByIdAndUpdate(
+        projectId,
+        {
+          $push: {
+            tasks: { taskTitle, taskDescription, taskStage, taskStatus },
+          },
+        },
+        { new: true }
+      );
+    },
+
+    deleteTaskFromProject: async (_, { projectId, taskId }) => {
+      return Project.findByIdAndUpdate(
+        projectId,
+        {
+          $pull: { tasks: { _id: taskId } },
+        },
+        { new: true }
+      );
     },
   },
 };

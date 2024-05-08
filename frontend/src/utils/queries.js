@@ -11,7 +11,6 @@ export const QUERY_USER = gql`
     }
   }
 `;
- 
 
 // Project Queries
 
@@ -22,10 +21,17 @@ export const QUERY_PROJECTS = gql`
       _id
       name
       projectCode
+      description
       status
       startDate
       endDate
-      description
+      tasks {
+        _id
+        taskStatus
+        taskTitle
+        taskDescription
+        taskStage
+      }
     }
   }
 `;
@@ -36,12 +42,19 @@ export const QUERY_SINGLE_PROJECT = gql`
   query singleProject($projectId: ID!) {
     project(projectId: $projectId) {
       _id
-      projectCode
       name
       description
       status
+      projectCode
       startDate
       endDate
+      tasks {
+        _id
+        taskDescription
+        taskStage
+        taskStatus
+        taskTitle
+      }
     }
   }
 `;

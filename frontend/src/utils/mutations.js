@@ -92,3 +92,27 @@ export const UPDATE_PROJECT = gql`
     }
   }
 `;
+
+// adding tasks to project
+
+export const ADD_TASK = gql`
+  mutation addTaskToProject(
+    $projectId: ID!
+    $taskTitle: String!
+    $taskDescription: String!
+    $taskStage: String!
+    $taskStatus: String!
+  ) {
+    addTaskToProject(
+      projectId: $projectId
+      taskTitle: $taskTitle
+      taskDescription: $taskDescription
+      taskStage: $taskStage
+      taskStatus: $taskStatus
+    ) {
+      _id
+      name
+      projectCode
+    }
+  }
+`;

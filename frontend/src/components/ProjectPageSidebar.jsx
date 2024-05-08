@@ -74,7 +74,7 @@ export default function ProjectPageSidebar() {
   const { loading, data } = useQuery(QUERY_USER);
   const userdata = data?.user || {};
 
-  console.log("USER",userdata);
+ 
 
   const logout = (event) => {
     event.preventDefault();

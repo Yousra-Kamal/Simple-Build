@@ -1,45 +1,18 @@
 /* eslint-disable react/prop-types */
 import { Fragment } from "react";
 import ChartCard from "./ChartCard";
+import AddTaskForm from "./AddTaskForm";
+import {
+  ClipboardDocumentListIcon as TodoIcon,
+  PencilSquareIcon,
+  MinusIcon,
+} from "@heroicons/react/24/outline";
 
 import { Menu, Transition } from "@headlessui/react";
 import { EllipsisVerticalIcon, PaperClipIcon } from "@heroicons/react/20/solid";
 
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
-
-// for tasks later
-const invoice = {
-  subTotal: "$8,800.00",
-  tax: "$1,760.00",
-  total: "$10,560.00",
-  items: [
-    {
-      id: 1,
-      title: "Site Preparation",
-      description: "Ensure site safety measures are in place.",
-      hours: "20.0",
-      rate: "setup",
-      price: "in progress",
-    },
-    {
-      id: 2,
-      title: "Foundation and Structural Work",
-      description: "Excavate and lay foundations for the residences.",
-      hours: "52.0",
-      rate: "setup",
-      price: "in progress",
-    },
-    {
-      id: 3,
-      title: "Building Construction",
-      description: "Monitor progress and quality of workmanship.",
-      hours: "12.0",
-      rate: "setup",
-      price: "in progress",
-    },
-  ],
-};
 
 //for comments later
 const activity = [
@@ -84,6 +57,8 @@ function classNames(...classes) {
 }
 
 export default function ProjectCardBodye({ project }) {
+  const tasks = project.tasks;
+
   return (
     <>
       <main>
@@ -123,9 +98,13 @@ export default function ProjectCardBodye({ project }) {
               <div className="flex items-center gap-x-4 sm:gap-x-6">
                 <Link
                   to={`/updateprojectForm/${project._id}`}
-                  className="hidden text-sm font-semibold leading-6 text-blue-6700 sm:block"
+                  className="text-sm font-semibold leading-6   flex items-center"
                 >
-                  Edit 🖊
+                  Edit
+                  <PencilSquareIcon
+                    className="w-5 h-5 ml-1 text-blue-600"
+                    aria-hidden="true"
+                  />{" "}
                 </Link>
 
                 <Menu as="div" className="relative sm:hidden">
@@ -170,11 +149,12 @@ export default function ProjectCardBodye({ project }) {
 
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 grid-rows-1 items-start gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {/* Invoice summary */}
+            {/* Project summary */}
             <div className="lg:col-start-3 lg:row-end-1">
               <ChartCard />
             </div>
-            {/* Invoice */}
+            {/* project description */}
+
             <div className="-mx-4 px-4 py-8 shadow-sm ring-1 ring-gray-900/5 sm:mx-0 sm:rounded-lg sm:px-8 sm:pb-14 lg:col-span-2 lg:row-span-2 lg:row-end-2 xl:px-16 xl:pb-20 xl:pt-16">
               <h2 className="text-base font-semibold leading-6 text-gray-900">
                 Description
@@ -221,9 +201,14 @@ export default function ProjectCardBodye({ project }) {
                   <tr>
                     <th
                       scope="col"
-                      className="px-0 py-3 font-semibold text-lg text-gray-900"
+                      className="px-0 py-3 font-semibold text-lg text-gray-900 flex items-center"
                     >
-                      Tasks
+                      <span className="mr-1">Tasks</span>{" "}
+                      {/* Add a margin to separate the icon from text */}
+                      <TodoIcon
+                        className="h-5 w-5 text-gray-500"
+                        aria-hidden="true"
+                      />
                     </th>
                     <th
                       scope="col"
@@ -237,30 +222,82 @@ export default function ProjectCardBodye({ project }) {
                     >
                       Status
                     </th>
+                    <th
+                      scope="col"
+                      className="font-bold py-3 pl-8 pr-0 text-right text-green-700"
+                    ></th>
                   </tr>
                 </thead>
-                <tbody>
-                  {invoice.items.map((item) => (
-                    <tr key={item.id} className="border-b border-gray-100">
-                      <td className="max-w-0 px-0 py-5 align-top">
+                <tbody className="border-b border-gray-200 text-gray-900">
+                  {tasks.map((task) => (
+                    <tr key={task._id} className="">
+                      <td className="max-w-0 px-0 py-5 align-top  border-b border-gray-200">
                         <div className="truncate font-medium text-gray-900">
-                          {item.title}
+                          {task.taskTitle}
                         </div>
                         <div className="truncate text-gray-500">
-                          {item.description}
+                          {task.taskDescription}
                         </div>
                       </td>
 
                       <td className="hidden py-5 pl-8 pr-0 text-right align-top tabular-nums text-gray-700 sm:table-cell">
-                        {item.rate}
+                        {task.taskStage}
                       </td>
-                      <td className="py-5 pl-8 pr-0 text-right align-top tabular-nums text-gray-700">
-                        {item.price}
+                      <td className="py-5 pl-8 pr-0 text-right align-top tabular-nums text-green-600">
+                        {task.taskStatus}
+                      </td>
+                      <td className="  font-bold text-red-600 py-6 pl-8 pr-0 text-right align-top tabular-nums t">
+                        <button
+                          onClick={() => {
+                            alert("deletion button works");
+                          }}
+                        >
+                          <MinusIcon className="h-5 w-5" />
+                        </button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
-                <tfoot></tfoot>
+                <tfoot>
+                  <tr>
+                    <th
+                      scope="row"
+                      className="px-0 pb-0 pt-6 font-normal text-gray-700 sm:hidden"
+                    ></th>
+                    <th
+                      scope="row"
+                      colSpan={3}
+                      className="hidden px-0 pb-0 pt-6 font-normal text-gray-700 sm:table-cell"
+                    >
+                      <AddTaskForm />
+                    </th>
+                    <td className="pb-0 pl-8 pr-0 pt-6 text-right tabular-nums text-gray-900"></td>
+                  </tr>
+                  <tr>
+                    <th
+                      scope="row"
+                      className="pt-4 font-normal text-gray-700 sm:hidden"
+                    ></th>
+                    <th
+                      scope="row"
+                      colSpan={3}
+                      className="hidden pt-4 text-right font-normal text-gray-700 sm:table-cell"
+                    ></th>
+                    <td className="pb-0 pl-8 pr-0 pt-4 text-right tabular-nums text-gray-900"></td>
+                  </tr>
+                  <tr>
+                    <th
+                      scope="row"
+                      className="pt-4 font-semibold text-gray-900 sm:hidden"
+                    ></th>
+                    <th
+                      scope="row"
+                      colSpan={3}
+                      className="hidden pt-4 text-right font-semibold text-gray-900 sm:table-cell"
+                    ></th>
+                    <td className="pb-0 pl-8 pr-0 pt-4 text-right font-semibold tabular-nums text-gray-900"></td>
+                  </tr>
+                </tfoot>
               </table>
             </div>
 
