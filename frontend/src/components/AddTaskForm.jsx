@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
+
 import { useParams } from "react-router-dom";
 import { ADD_TASK } from "../utils/mutations";
 import { Fragment } from "react";
@@ -8,15 +10,15 @@ import { Popover, Transition } from "@headlessui/react";
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
 export default function AddTaskForm() {
+  const { projectId } = useParams();
   const [addTask, { error }] = useMutation(ADD_TASK);
+
   const [taskFormData, setTaskFormData] = useState({
     taskTitle: "",
     taskDescription: "",
     taskStage: "",
     taskStatus: "",
   });
-
-  const { projectId } = useParams();
 
   const handleTaskChange = (e) => {
     const { name, value } = e.target;

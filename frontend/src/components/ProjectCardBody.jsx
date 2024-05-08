@@ -14,6 +14,9 @@ import { EllipsisVerticalIcon, PaperClipIcon } from "@heroicons/react/20/solid";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 
+import { useMutation } from "@apollo/client";
+import { DELETE_TASK } from "../utils/mutations";
+
 //for comments later
 const activity = [
   {
@@ -58,6 +61,27 @@ function classNames(...classes) {
 
 export default function ProjectCardBodye({ project }) {
   const tasks = project.tasks;
+
+  const [deleteTask] = useMutation(DELETE_TASK);
+
+  const handleDeleteTask = async (taskId) => {
+    console.log("taskId:", taskId, "project._id", project._id);
+    try {
+      const { data } = await deleteTask({
+        variables: {
+          projectId: project._id,
+          taskId: taskId,
+        },
+      });
+      console.log("Task deleted:", data);
+      
+      // Handle UI updates or notifications upon successful deletion
+    } catch (error) {
+      console.error("Error deleting task:", error);
+      // Handle error state or show error message to user
+    }
+    window.location.reload();
+  };
 
   return (
     <>
@@ -247,12 +271,8 @@ export default function ProjectCardBodye({ project }) {
                         {task.taskStatus}
                       </td>
                       <td className="  font-bold text-red-600 py-6 pl-8 pr-0 text-right align-top tabular-nums t">
-                        <button
-                          onClick={() => {
-                            alert("deletion button works");
-                          }}
-                        >
-                          <MinusIcon className="h-5 w-5" />
+                        <button onClick={() => handleDeleteTask(task._id)}>
+                        <MinusIcon className="h-5 w-5" />
                         </button>
                       </td>
                     </tr>

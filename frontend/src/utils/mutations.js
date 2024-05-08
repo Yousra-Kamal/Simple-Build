@@ -116,3 +116,16 @@ export const ADD_TASK = gql`
     }
   }
 `;
+
+
+// deleting tasks from project
+
+export const DELETE_TASK = gql`
+  mutation deleteTask($projectId: ID!, $taskId: ID!) {
+    deleteTaskFromProject(projectId: $projectId, taskId: $taskId) {
+      _id
+      name
+      projectCode
+    }
+  }
+`;
