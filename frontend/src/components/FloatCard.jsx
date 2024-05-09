@@ -14,7 +14,7 @@ export default function FloatCard() {
 
         <CardItem translateZ="100" className="w-full mt-4">
           <img
-            src="/images/house.png"
+            src="/images/illustration_engineer.png"
             height="1000"
             width="1000"
             className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"

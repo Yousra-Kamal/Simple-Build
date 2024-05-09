@@ -42,16 +42,14 @@ export default function MainNav() {
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
-                  <Link to="/projects">
-                    <img
-                      className="h-8 w-auto pr-2"
-                      src={logo}
-                      alt="SimpleBuild logo"
-                    />
-                    <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
-                      SimpleBuild
-                    </h1>
-                  </Link>
+                  <img
+                    className="h-8 w-auto pr-2"
+                    src={logo}
+                    alt="SimpleBuild logo"
+                  />
+                  <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
+                    SimpleBuild
+                  </h1>
                 </div>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                   <NavLink

@@ -162,7 +162,7 @@ export default function HomePage() {
                 <p className="mt-6 text-lg leading-8 text-gray-300">
                   Welcome to SimpleBuild—a comprehensive software solution for
                   streamlined construction project management. Empowering
-                  construction professionals with efficient tools for planning,
+                  builders with efficient tools for planning,
                   executing, and overseeing projects effectively.
                 </p>
               </div>
@@ -245,7 +245,7 @@ export default function HomePage() {
                 </svg>
                 <blockquote className="text-xl font-semibold leading-8 text-white sm:text-2xl sm:leading-9">
                   <p>
-                    SimpleBuild is a revolutionary platform that empowers users
+                    SimpleBuild is a revolutionary platform that empowers builders
                     to easily create and manage construction projects. Our
                     intuitive interface allows you to plan, track, and
                     collaborate on projects with ease. Say goodbye to paperwork
@@ -382,7 +382,7 @@ export default function HomePage() {
         </h2>
         <div className="mt-16 py-10 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
           <p className=" pl-4 leading-5 text-md text-gray-400">
-            &copy; 2024 SimpleBuild, Inc. All rights reserved.
+            &copy; 2024 SimpleBuild. All rights reserved.
           </p>
         </div>
       </footer>
