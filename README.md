@@ -16,6 +16,22 @@ The purpose of SimpleBuild is to create a ONE STOP solution to a address these i
 AS A residential builder
 I WANT to manage my business effectively, and provide customer service to my clients.
 
+## Technologies Used
+
+- Frontend:
+React.
+tailwind css for styling.
+Chart.js (Financial Chart).
+Aceternity ui(for the 3d-card).
+- Backend:
+Node.js.
+Express.js.
+graphql.
+MongoDB and the Mongoose ODM for the database.
+bcrypt.
+
+
+
 ## Application Preview
 
 The web application is hosted on Render.
@@ -25,6 +41,7 @@ View deployed application: [Simple Build](https://simple-build.onrender.com/)
 ![Screenshot](frontend/public/images/Screenshot3.png)
 
 ![Screenshot](frontend/public/images/Screenshot2.png)
+
 
 
 
