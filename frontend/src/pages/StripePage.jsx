@@ -6,12 +6,15 @@ import {
 } from "@stripe/react-stripe-js";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import { Navigate, Link } from "react-router-dom";
-const baseUrl = import.meta.env.VITE_RENDER_EXTERNAL_HOSTNAME || "http://localhost:3001";
+const baseUrl =
+  import.meta.env.VITE_RENDER_EXTERNAL_HOSTNAME || "http://localhost:3001";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 // This is your test public API key.
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(
+  "pk_test_51PDMlIGnmdmVN24CYRBZ8mn28LQ2xrF8CTqCQT7gGQZS6Pr08VRHDRtcpfcnbMcdm85qvgurfCAvgt6kEUlFYzOW002SrtmgHP"
+);
 export const CheckoutForm = () => {
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
@@ -39,7 +42,7 @@ export const Return = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
-   
+
     fetch(`${baseUrl}/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {

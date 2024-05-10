@@ -11,9 +11,7 @@ const db = require("./db/connectDB.js");
 var cors = require("cors");
 
 // This is your test secret API key.
-const stripe = require("stripe")(
-  "sk_test_51PDMlIGnmdmVN24CffN5Hev35k9rpgalNZzyHJA96ZIXjXjkPEagzamH5KHuBDfqENImsLMbD7ElYQu1CyBHR4lA00HYjx8d2W"
-);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,8 +21,7 @@ const server = new ApolloServer({
 });
 
 app.use(cors());
-const YOUR_DOMAIN =
-  process.env.RENDER_EXTERNAL_HOSTNAME || "http://localhost:3000";
+const YOUR_DOMAIN = process.env.RENDER_EXTERNAL_URL || "http://localhost:3000";
 
 app.get("/session-status", async (req, res) => {
   const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
