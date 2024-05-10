@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useCallback, useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
