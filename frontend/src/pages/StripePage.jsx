@@ -18,7 +18,7 @@ const stripePromise = loadStripe(
 export const CheckoutForm = () => {
   const fetchClientSecret = useCallback(() => {
     // Create a Checkout Session
-    return fetch(`${baseUrl}/create-checkout-session`, {
+    return fetch("https://simple-build.onrender.com/create-checkout-session", {
       method: "POST",
     })
       .then((res) => res.json())
@@ -43,7 +43,7 @@ export const Return = () => {
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
 
-    fetch(`${baseUrl}/session-status?session_id=${sessionId}`)
+    fetch(`https://simple-build.onrender.com/session-status?session_id=${sessionId}`)
       .then((res) => res.json())
       .then((data) => {
         setStatus(data.status);
