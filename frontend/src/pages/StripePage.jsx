@@ -7,7 +7,7 @@ import {
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import { Navigate, Link } from "react-router-dom";
 const baseUrl =
-  import.meta.env.VITE_RENDER_EXTERNAL_URL|| "http://localhost:3001";
+  import.meta.env.RENDER_EXTERNAL_URL|| "http://localhost:3001";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
