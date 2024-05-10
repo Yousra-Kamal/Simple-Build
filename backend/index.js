@@ -21,7 +21,7 @@ const server = new ApolloServer({
 });
 
 app.use(cors());
-const YOUR_DOMAIN = process.env.RENDER_EXTERNAL_HOSTNAME || "http://localhost:3000";
+const YOUR_DOMAIN = process.env.RENDER_EXTERNAL_HOSTNAME ;
 
 app.get("/session-status", async (req, res) => {
  
