@@ -9,22 +9,17 @@ import {
   CalendarIcon,
   ChartPieIcon,
   DocumentDuplicateIcon,
-  FolderIcon,
   HomeIcon,
   UsersIcon,
   XMarkIcon,
   ShoppingCartIcon,
   CalculatorIcon,
   ComputerDesktopIcon,
-  WrenchScrewdriverIcon,
   ClipboardDocumentIcon,
   CurrencyDollarIcon,
   RectangleGroupIcon,
 } from "@heroicons/react/24/outline";
-import {
-  ChevronDownIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/20/solid";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import Auth from "../utils/auth";
 
@@ -32,39 +27,78 @@ import { useQuery } from "@apollo/client";
 import { QUERY_USER } from "../utils/queries";
 
 const navigation = [
-  { name: "Overview", href: "#", icon: ComputerDesktopIcon, current: true },
+  {
+    name: "Overview",
+    href: "#",
+    soon: "",
+    icon: ComputerDesktopIcon,
+    current: true,
+  },
   { name: "Projects", href: "/projects", icon: HomeIcon, current: false },
   {
     name: "Services",
     href: "/Services",
+    soon: "",
     icon: RectangleGroupIcon,
     current: false,
   },
-  { name: "Estimate", href: "#", icon: CalculatorIcon, current: false },
+  {
+    name: "Estimate",
+    href: "#",
+    soon: "Coming soon",
+    icon: CalculatorIcon,
+    current: false,
+  },
   {
     name: "Proposal",
     href: "#",
+    soon: "Coming soon",
     icon: ClipboardDocumentIcon,
     current: false,
   },
-  { name: "Schedule", href: "#", icon: CalendarIcon, current: false },
+  {
+    name: "Schedule",
+    href: "#",
+    soon: "Coming soon",
+    icon: CalendarIcon,
+    current: false,
+  },
   {
     name: "Purchase Orders",
     href: "#",
+    soon: "Coming soon",
     icon: ShoppingCartIcon,
     current: false,
   },
-  { name: "Budget", href: "#", icon: CurrencyDollarIcon, current: false },
   {
-    name: "Selections and Allowances",
+    name: "Budget",
     href: "#",
-    icon: FolderIcon,
+    soon: "Coming soon",
+    icon: CurrencyDollarIcon,
     current: false,
   },
 
-  { name: "Files", href: "#", icon: DocumentDuplicateIcon, current: false },
-  { name: "Reports", href: "#", icon: ChartPieIcon, current: false },
-  { name: "Team", href: "#", icon: UsersIcon, current: false },
+  {
+    name: "Files",
+    href: "#",
+    soon: "Coming soon",
+    icon: DocumentDuplicateIcon,
+    current: false,
+  },
+  {
+    name: "Reports",
+    href: "#",
+    soon: "Coming soon",
+    icon: ChartPieIcon,
+    current: false,
+  },
+  {
+    name: "Team",
+    href: "#",
+    soon: "Coming soon",
+    icon: UsersIcon,
+    current: false,
+  },
 ];
 
 const userNavigation = [{ name: "Sign out" }];
@@ -175,6 +209,9 @@ export default function ProjectPageSidebar() {
                                   aria-hidden="true"
                                 />
                                 {item.name}
+                                <span className=" text-sm  italic text-gray-300">
+                          {item.soon}
+                        </span>
                               </NavLink>
                             </li>
                           ))}
@@ -194,7 +231,11 @@ export default function ProjectPageSidebar() {
         {/* Sidebar component, swap this element with another sidebar if you like */}
         <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white pb-4">
           <div className="flex h-16 shrink-0 items-center">
-            <img className="h-8 w-auto pr-2" src={logo} alt="simplebuild logo" />
+            <img
+              className="h-8 w-auto pr-2"
+              src={logo}
+              alt="simplebuild logo"
+            />
             <Link to="/projects">
               <h1 className=" font-serif font-extrabold text-xl drop-shadow-xl text-blue-800 tracking-tight">
                 SimpleBuild
@@ -225,7 +266,10 @@ export default function ProjectPageSidebar() {
                           )}
                           aria-hidden="true"
                         />
-                        {item.name}
+                        {item.name}{" "}
+                        <span className=" text-sm  italic text-gray-300">
+                          {item.soon}
+                        </span>
                       </NavLink>
                     </li>
                   ))}
