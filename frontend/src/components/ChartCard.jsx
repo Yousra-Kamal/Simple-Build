@@ -12,7 +12,7 @@ export default function ChartCard() {
             </p>
           </div>
 
-          <div className="mt-4 flex w-full flex-none gap-x-4 px-6">
+          <div className="mt-4 flex w-full flex-none gap-x-4 ">
             <Chart />
           </div>
         </dl>

@@ -66,7 +66,6 @@ export default function ProjectCardBodye({ project }) {
   const [deleteTask] = useMutation(DELETE_TASK);
 
   const handleDeleteTask = async (taskId) => {
-    
     try {
       const { data } = await deleteTask({
         variables: {
@@ -74,8 +73,7 @@ export default function ProjectCardBodye({ project }) {
           taskId: taskId,
         },
       });
-       
-      
+
       // Handle UI updates or notifications upon successful deletion
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -187,15 +185,15 @@ export default function ProjectCardBodye({ project }) {
               <dl className="mt-6 grid grid-cols-1 text-sm leading-6 sm:grid-cols-2">
                 <div className="sm:pr-4">
                   <dt className="inline text-gray-500">
-                    {" "}
                     {project.description}
-                  </dt>{" "}
+                  </dt>
                   <dd className="inline text-gray-700"></dd>
                 </div>
+
                 <div className="mt-2 sm:mt-0 sm:pl-4">
                   <dt className="inline text-gray-900 font-semibold">
                     Status :
-                  </dt>{" "}
+                  </dt>
                   <dd className="inline  text-green-600 font-semibold">
                     <div>{project.status}</div>
                   </dd>
@@ -215,6 +213,8 @@ export default function ProjectCardBodye({ project }) {
                   </dd>
                 </div>
               </dl>
+
+              {/* Tasks table */}
               <table className="mt-16 w-full whitespace-nowrap text-left text-sm leading-6">
                 <colgroup>
                   <col className="w-full" />
@@ -222,6 +222,7 @@ export default function ProjectCardBodye({ project }) {
                   <col />
                   <col />
                 </colgroup>
+                {/* Table rows */}
                 <thead className="border-b border-gray-200 text-gray-900">
                   <tr>
                     <th
@@ -237,7 +238,7 @@ export default function ProjectCardBodye({ project }) {
                     </th>
                     <th
                       scope="col"
-                      className="hidden py-3 pl-8 pr-0 text-right font-semibold sm:table-cell"
+                      className=" py-3 pl-8 pr-0 text-right font-semibold sm:table-cell"
                     >
                       Stage
                     </th>
@@ -253,6 +254,7 @@ export default function ProjectCardBodye({ project }) {
                     ></th>
                   </tr>
                 </thead>
+
                 <tbody className="border-b border-gray-200 text-gray-900">
                   {tasks.map((task) => (
                     <tr key={task._id} className="">
@@ -265,15 +267,15 @@ export default function ProjectCardBodye({ project }) {
                         </div>
                       </td>
 
-                      <td className="hidden py-5 pl-8 pr-0 text-right align-top tabular-nums text-gray-700 sm:table-cell">
+                      <td className=" py-5 pl-8 pr-0 text-right align-top tabular-nums text-gray-700 sm:table-cell">
                         {task.taskStage}
                       </td>
                       <td className="py-5 pl-8 pr-0 text-right align-top tabular-nums text-green-800">
                         {task.taskStatus}
                       </td>
-                      <td className="  font-bold text-red-600 py-6 pl-8 pr-0 text-right align-top tabular-nums t">
+                      <td className="font-bold text-red-600 py-6 pl-8 pr-0 text-right align-top tabular-nums t">
                         <button onClick={() => handleDeleteTask(task._id)}>
-                        <MinusIcon className="h-5 w-5" />
+                          <MinusIcon className="h-5 w-5" />
                         </button>
                       </td>
                     </tr>
@@ -288,7 +290,7 @@ export default function ProjectCardBodye({ project }) {
                     <th
                       scope="row"
                       colSpan={3}
-                      className="hidden px-0 pb-0 pt-6 font-normal text-gray-700 sm:table-cell"
+                      className="px-0 pb-0 pt-6 font-normal text-gray-700 sm:table-cell"
                     >
                       <AddTaskForm />
                     </th>
