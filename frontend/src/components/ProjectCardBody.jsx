@@ -7,6 +7,7 @@ import {
   ClipboardDocumentListIcon as TodoIcon,
   PencilSquareIcon,
   MinusIcon,
+  XMarkIcon
 } from "@heroicons/react/24/outline";
 
 import { Menu, Transition } from "@headlessui/react";
@@ -130,41 +131,7 @@ export default function ProjectCardBodye({ project }) {
                   />{" "}
                 </Link>
 
-                <Menu as="div" className="relative sm:hidden">
-                  <Menu.Button className="-m-3 block p-3">
-                    <span className="sr-only">More</span>
-                    <EllipsisVerticalIcon
-                      className="h-5 w-5 text-gray-500"
-                      aria-hidden="true"
-                    />
-                  </Menu.Button>
-
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-0.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to={`/updateprojectForm/${project._id}`}
-                            className={classNames(
-                              active ? "bg-gray-50" : "",
-                              "block px-3 py-1 text-sm leading-6 text-gray-900"
-                            )}
-                          >
-                            Edit
-                          </Link>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
+                 
               </div>
             </div>
           </div>
@@ -275,7 +242,7 @@ export default function ProjectCardBodye({ project }) {
                       </td>
                       <td className="font-bold text-red-600 py-6 pl-8 pr-0 text-right align-top tabular-nums t">
                         <button onClick={() => handleDeleteTask(task._id)}>
-                          <MinusIcon className="h-5 w-5" />
+                          <XMarkIcon className="h-5 w-5" />
                         </button>
                       </td>
                     </tr>
@@ -290,7 +257,7 @@ export default function ProjectCardBodye({ project }) {
                     <th
                       scope="row"
                       colSpan={3}
-                      className="px-0 pb-0 pt-6 font-normal text-gray-700 sm:table-cell"
+                      className="  pb-0 pt-6 font-normal text-gray-700 sm:table-cell"
                     >
                       <AddTaskForm />
                     </th>
@@ -327,7 +294,7 @@ export default function ProjectCardBodye({ project }) {
             <div className="lg:col-start-3 pl-2 pr-2  ">
               {/* Activity feed */}
               <h2 className=" bg-slate-100 py-2 font-semibold leading-6 text-gray-900">
-                Chat{" "}
+                Chat
                 <span className=" text-lg text-gray-400 pl-40 italic">
                   Coming soon
                 </span>
