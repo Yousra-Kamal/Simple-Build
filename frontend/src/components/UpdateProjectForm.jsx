@@ -31,18 +31,18 @@ export default function UpdateProjectForm() {
   // Use the useEffect hook to set the form state when the query data changes (i.e. when the query is successful)
   useEffect(() => {
     // If the query data exists, set the form state to the data from the server
-    const projectData = data?.project || {};
-    if (projectData) {
+    if (!loading && data) {
+      const projectData = data.project || {};
       setFormState({
         name: projectData.name,
         description: projectData.description,
         status: projectData.status,
         projectCode: projectData.projectCode,
-        startDate: projectData.startDate,
-        endDate: projectData.endDate,
+        startDate: projectData.startDate.split("/").reverse().join("-"),
+        endDate: projectData.endDate.split("/").reverse().join("-"),
       });
     }
-  }, [data]);
+  }, [loading, data]);
 
   // Use the useMutation hook to update the project when the form is submitted
   const [updateProject, { error }] = useMutation(UPDATE_PROJECT, {
@@ -178,21 +178,10 @@ export default function UpdateProjectForm() {
               {/*   eslint-disable-next-line react/no-unknown-property */}
               <div className="flex items-center mt-2.5 ">
                 {/* StartDate */}
-                <div className="relative">
-                  <div className="absolute  inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg
-                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                    </svg>
-                  </div>
+                <div>
                   <input
                     name="startDate"
-                    type="text"
+                    type="date"
                     onChange={handleChange}
                     value={formState.startDate}
                     className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -201,21 +190,10 @@ export default function UpdateProjectForm() {
                 </div>
                 <span className="mx-4 text-gray-500">to</span>
                 {/* EndDate */}
-                <div className="relative">
-                  <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg
-                      className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                    </svg>
-                  </div>
+                <div>
                   <input
                     name="endDate"
-                    type="text"
+                    type="date"
                     onChange={handleChange}
                     value={formState.endDate}
                     className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
