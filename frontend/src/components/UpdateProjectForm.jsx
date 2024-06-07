@@ -176,15 +176,16 @@ export default function UpdateProjectForm() {
                 Date
               </label>
               {/*   eslint-disable-next-line react/no-unknown-property */}
-              <div className="flex items-center mt-2.5 ">
+              <div className="flex flex-col md:flex-row items-center mt-2.5 space-y-2.5 md:space-y-0 md:space-x-4">
                 {/* StartDate */}
                 <div>
                   <input
                     name="startDate"
                     type="date"
-                    onChange={handleChange}
                     value={formState.startDate}
-                    className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required
+                    onChange={handleChange}
+                    className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-16 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select date start"
                   />
                 </div>
@@ -196,7 +197,8 @@ export default function UpdateProjectForm() {
                     type="date"
                     onChange={handleChange}
                     value={formState.endDate}
-                    className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required
+                    className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-16 py-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select date end"
                   />
                 </div>
@@ -217,7 +219,7 @@ export default function UpdateProjectForm() {
                   autoComplete="status"
                   onChange={handleChange}
                   value={formState.status}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 py-2  text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:max-w-xs sm:text-sm sm:leading-6"
                 >
                   <option value="">Select Status</option>
                   <option value="Sales">Sales</option>

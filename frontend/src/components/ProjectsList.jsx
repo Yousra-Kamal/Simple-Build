@@ -23,7 +23,6 @@ export default function ProjectsList({ list }) {
   };
 
   const projects = list.projects || [];
- 
 
   // If there are no projects, display a message prompting the user to create a project
   if (!projects.length) {
@@ -49,7 +48,7 @@ export default function ProjectsList({ list }) {
   }
 
   return (
-    <div className=" flex min-h-full flex-1 flex-col justify-center py-12 lg:px-8">
+    <div className="flex min-h-full flex-1 flex-col justify-center py-12 lg:px-8">
       <div className="pt-4 bg-white px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
@@ -60,7 +59,6 @@ export default function ProjectsList({ list }) {
           <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
             <Link
               to="/projectForm"
-              type="button"
               className="block rounded-md bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
             >
               Create a Project
@@ -70,99 +68,146 @@ export default function ProjectsList({ list }) {
         <div className="mt-8 flow-root">
           <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-              <table className="min-w-full divide-y divide-gray-300">
-                <thead>
-                  <tr>
-                    <th
-                      scope="col"
-                      className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-                    >
-                      Project ID
-                    </th>
-                    <th
-                      scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-                    >
-                      Name
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-                    >
-                      Start Date
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      End Date
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Status
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="relative py-3.5 pl-3 pr-4 sm:pr-0"
-                    >
-                      <span className="sr-only">Edit</span>
-                    </th>
-                    <th
-                      scope="col"
-                      className="relative py-3.5 pl-3 pr-4 sm:pr-0"
-                    >
-                      <span className="sr-only">Delete</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-200">
-                  {projects.map((project) => (
-                    <tr key={project._id}>
-                      <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm  sm:pl-0">
-                        <Link
-                          to={`/projectPage/${project._id}`}
-                          className="text-blue-600 font-semibold underline hover:text-blue-900"
-                        >
-                          {project.projectCode}
-                        </Link>
-                      </td>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                        🏚 {project.name}
-                      </td>
-
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.startDate}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.endDate}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.status}
-                      </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                        <Link
-                          to={`/updateprojectForm/${project._id}`}
-                          className="text-blue-600 hover:text-blue-400"
-                        >
-                          Edit<span className="sr-only">, {project._id}</span>
-                        </Link>
-                      </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                        <button
-                          className="text-red-600 hover:text-red-400"
-                          onClick={() => handleDeleteProject(project._id)}
-                        >
-                          Delete
-                        </button>
-                      </td>
+              <div className="hidden md:block">
+                <table className="min-w-full divide-y divide-gray-300">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                      >
+                        Project ID
+                      </th>
+                      <th
+                        scope="col"
+                        className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                      >
+                        Name
+                      </th>
+                      <th
+                        scope="col"
+                        className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                      >
+                        Start Date
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      >
+                        End Date
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Status
+                      </th>
+                      <th
+                        scope="col"
+                        className="relative py-3.5 pl-3 pr-4 sm:pr-0"
+                      >
+                        <span className="sr-only">Edit</span>
+                      </th>
+                      <th
+                        scope="col"
+                        className="relative py-3.5 pl-3 pr-4 sm:pr-0"
+                      >
+                        <span className="sr-only">Delete</span>
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {projects.map((project) => (
+                      <tr key={project._id}>
+                        <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm sm:pl-0">
+                          <Link
+                            to={`/projectPage/${project._id}`}
+                            className="text-blue-600 font-semibold underline hover:text-blue-900"
+                          >
+                            {project.projectCode}
+                          </Link>
+                        </td>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                          🏚 {project.name}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {project.startDate}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {project.endDate}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {project.status}
+                        </td>
+                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                          <Link
+                            to={`/updateprojectForm/${project._id}`}
+                            className="text-blue-600 hover:text-blue-400"
+                          >
+                            Edit<span className="sr-only">, {project._id}</span>
+                          </Link>
+                        </td>
+                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
+                          <button
+                            className="text-red-600 hover:text-red-400"
+                            onClick={() => handleDeleteProject(project._id)}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="block md:hidden">
+                {projects.map((project) => (
+                  <div
+                    key={project._id}
+                    className="border-b border-gray-200 py-4 px-4"
+                  >
+                    <div className="flex justify-between items-center mb-10">
+                      <h3 className="text-md font-semibold text-gray-900">
+                        {project.name}
+                      </h3>
+                      <Link
+                        to={`/projectPage/${project._id}`}
+                        className="text-blue-600 font-semibold underline hover:text-blue-900"
+                      >
+                        {project.projectCode}
+                      </Link>
+                    </div>
+                    <div className="text-sm  text-gray-500 mb-2">
+                      <p className="mb-2">
+                        <span className="font-bold">Start Date:</span>{" "}
+                        {project.startDate}
+                      </p>
+                      <p className="mb-2">
+                        <span className="font-bold">End Date:</span>{" "}
+                        {project.endDate}
+                      </p>
+                      <p>
+                        <span className="font-bold">Status:</span>{" "}
+                        {project.status}
+                      </p>
+                    </div>
+                    <div className="flex justify-end space-x-4">
+                      <Link
+                        to={`/updateprojectForm/${project._id}`}
+                        className="text-blue-600 hover:text-blue-400"
+                      >
+                        Edit
+                      </Link>
+                      <button
+                        className="text-red-600 hover:text-red-400"
+                        onClick={() => handleDeleteProject(project._id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
