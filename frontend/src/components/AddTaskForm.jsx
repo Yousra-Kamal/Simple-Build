@@ -1,16 +1,22 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ADD_TASK } from "../utils/mutations";
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 
 import { PlusCircleIcon } from "@heroicons/react/24/outline";
 
-export default function AddTaskForm() {
+export default function AddTaskForm({ onAddTask }) {
+  // Added onAddTask prop to call the onAddTask function when a new task is added
+
   const { projectId } = useParams();
+  const navigate = useNavigate();
+
+  /*   console.log(projectId); */
   const [addTask, { error }] = useMutation(ADD_TASK);
 
   const [taskFormData, setTaskFormData] = useState({
@@ -35,7 +41,14 @@ export default function AddTaskForm() {
         },
       });
 
-      
+      const newTask = {
+        ...taskFormData,
+        _id: data.taskId,
+      };
+
+      //  Call the onAddTask prop with the new task
+      onAddTask(newTask);
+
       setTaskFormData({
         taskTitle: "",
         taskDescription: "",
@@ -45,7 +58,8 @@ export default function AddTaskForm() {
     } catch (err) {
       console.error(err);
     }
-    window.location.reload();
+    /*  window.location.reload(); */
+    navigate(`/projectPage/${projectId}`);
   };
 
   return (

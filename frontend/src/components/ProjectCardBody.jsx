@@ -1,17 +1,15 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { Fragment } from "react";
+import { useState } from "react";
 import ChartCard from "./ChartCard";
 import AddTaskForm from "./AddTaskForm";
 import {
   ClipboardDocumentListIcon as TodoIcon,
   PencilSquareIcon,
-  MinusIcon,
-  XMarkIcon
+  XMarkIcon,
 } from "@heroicons/react/24/outline";
 
-import { Menu, Transition } from "@headlessui/react";
-import { EllipsisVerticalIcon, PaperClipIcon } from "@heroicons/react/20/solid";
+import { PaperClipIcon } from "@heroicons/react/20/solid";
 
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
@@ -62,7 +60,8 @@ function classNames(...classes) {
 }
 
 export default function ProjectCardBodye({ project }) {
-  const tasks = project.tasks;
+  /*  const tasks = project.tasks; */
+  const [tasks, setTasks] = useState(project.tasks);
 
   const [deleteTask] = useMutation(DELETE_TASK);
 
@@ -75,12 +74,17 @@ export default function ProjectCardBodye({ project }) {
         },
       });
 
+      // Update the tasks state after deletion
+      setTasks(tasks.filter((task) => task._id !== taskId));
+
       // Handle UI updates or notifications upon successful deletion
     } catch (error) {
       console.error("Error deleting task:", error);
       // Handle error state or show error message to user
     }
-    window.location.reload();
+  };
+  const handleAddTask = (newTask) => {
+    setTasks([...tasks, newTask]);
   };
 
   return (
@@ -130,8 +134,6 @@ export default function ProjectCardBodye({ project }) {
                     aria-hidden="true"
                   />{" "}
                 </Link>
-
-                 
               </div>
             </div>
           </div>
@@ -181,7 +183,7 @@ export default function ProjectCardBodye({ project }) {
                 </div>
               </dl>
 
-              {/* Tasks table */}
+              {/* Tasks   */}
               <table className="mt-16 w-full whitespace-nowrap text-left text-sm leading-6">
                 <colgroup>
                   <col className="w-full" />
@@ -259,7 +261,7 @@ export default function ProjectCardBodye({ project }) {
                       colSpan={3}
                       className="  pb-0 pt-6 font-normal text-gray-700 sm:table-cell"
                     >
-                      <AddTaskForm />
+                      <AddTaskForm onAddTask={handleAddTask} />
                     </th>
                     <td className="pb-0 pl-8 pr-0 pt-6 text-right tabular-nums text-gray-900"></td>
                   </tr>

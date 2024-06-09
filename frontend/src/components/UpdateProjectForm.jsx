@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
-import { useNavigate } from "react-router-dom";
 
 import { QUERY_PROJECTS } from "../utils/queries";
 import { UPDATE_PROJECT } from "../utils/mutations";
@@ -79,8 +78,6 @@ export default function UpdateProjectForm() {
       [name]: value,
     }));
   };
-
-  // Redirect to the homepageProjectLists after updating the project
 
   return (
     <>
