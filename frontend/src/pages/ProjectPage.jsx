@@ -3,8 +3,6 @@ import { useQuery } from "@apollo/client";
 import SpinnerLoader from "../components/SpinnerLoader";
 import { QUERY_SINGLE_PROJECT } from "../utils/queries";
 
-import ProjectPageSidebar from "../components/ProjectPageSidebar";
-
 import ProjectCardBody from "../components/ProjectCardBody";
 
 export default function ProjectPage() {
@@ -20,11 +18,5 @@ export default function ProjectPage() {
     return <SpinnerLoader />;
   }
 
-  return (
-    <>
-      <ProjectPageSidebar />
-
-      <ProjectCardBody project={project} />
-    </>
-  );
+  return <ProjectCardBody project={project} />;
 }

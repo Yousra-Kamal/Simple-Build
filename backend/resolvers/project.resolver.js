@@ -110,7 +110,7 @@ const projectResolver = {
       );
     },
 
-    deleteTaskFromProject: async (_, { projectId, taskId }) => {
+    /*  deleteTaskFromProject: async (_, { projectId, taskId }) => {
       return Project.findByIdAndUpdate(
         projectId,
         {
@@ -118,6 +118,24 @@ const projectResolver = {
         },
         { new: true }
       );
+    }, */
+
+    deleteTask: async (_, { projectId, taskIndex }) => {
+      try {
+        const project = await Project.findById(projectId);
+
+        if (!project) {
+          throw new Error("Project not found");
+        }
+        // Remove the task at the specified index
+        project.tasks.splice(taskIndex, 1);
+
+        await project.save();
+
+        return project;
+      } catch (error) {
+        throw new Error(`Failed to delete task: ${error.message}`);
+      }
     },
   },
 };

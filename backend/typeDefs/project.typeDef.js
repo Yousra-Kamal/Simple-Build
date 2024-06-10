@@ -61,7 +61,9 @@ const projectTypeDef = `#graphql
         ): Project
         
 
-        deleteTaskFromProject(projectId: ID!, taskId: ID!): Project
+       """  deleteTaskFromProject(projectId: ID!, taskId: ID!): Project """
+
+        deleteTask(projectId:ID!, taskIndex:Int! ): Project
 
         deleteProject(projectId: ID!): Project
     }

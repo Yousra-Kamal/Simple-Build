@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import userlogo from "/images/user.jpg";
 import logo from "/images/logo.png";
 import { Fragment, useState } from "react";
@@ -210,8 +210,8 @@ export default function ProjectPageSidebar() {
                                 />
                                 {item.name}
                                 <span className=" text-sm  italic text-gray-300">
-                          {item.soon}
-                        </span>
+                                  {item.soon}
+                                </span>
                               </NavLink>
                             </li>
                           ))}
@@ -350,6 +350,11 @@ export default function ProjectPageSidebar() {
             </div>
           </div>
         </div>
+        <main className="py-10">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <Outlet />
+          </div>
+        </main>
       </div>
     </div>
   );

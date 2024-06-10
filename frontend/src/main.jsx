@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ServicePage from "./pages/ServicePage.jsx";
 import { CheckoutForm, Return } from "./pages/StripePage.jsx";
 import StripePage from "./pages/StripePage.jsx";
+import ProjectPageSidebar from "./components/ProjectPageSidebar.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,7 +33,11 @@ const router = createBrowserRouter(
       {/* Protected routes */}
       <Route element={<ProtectedRoute />}>
         <Route path="projects" element={<AllProjects />} />
+        <Route  element={<ProjectPageSidebar />}>
+        
         <Route path="projectPage/:projectId" element={<ProjectPage />} />
+        </Route>
+         
         <Route
           path="updateprojectForm/:projectId"
           element={<UpdateProjectPage />}

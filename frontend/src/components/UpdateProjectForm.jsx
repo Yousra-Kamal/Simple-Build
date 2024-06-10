@@ -64,7 +64,7 @@ export default function UpdateProjectForm() {
     } catch (e) {
       console.error(e);
     }
-    navigate("/projects");
+    navigate(`/projectPage/${projectId}`);
   };
 
   const handleChange = (event) => {
